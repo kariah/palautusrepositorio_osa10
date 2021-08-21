@@ -1,19 +1,19 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const RepositoryItem = (repository) => {  
-    // console.log('repository ', repository.item); 
-
+const RepositoryItem = (item) => {  
+    // console.log('repository ', item.item); 
+ 
     return (
         <View>
-            <Text>Full name: {repository.item.fullName}</Text> 
-            <Text>Description: {repository.item.description}</Text> 
-            <Text>Language: {repository.item.language}</Text> 
-            <Text>Forks: {repository.item.forksCount}</Text>  
-            <Text>Stars: {repository.item.stargazersCount}</Text> 
-            <Text>Rating: {repository.item.ratingAverage}</Text> 
-            <Text>Reviews: {repository.item.reviewCount}</Text> 
-            {/* <Text>ownerAvatarUrl: {repository.item.ownerAvatarUrl}</Text>  */}
+            <Text>Full name: {item.item.fullName}</Text> 
+            <Text>Description: {item.item.description}</Text> 
+            <Text>Language: {item.item.language}</Text> 
+            <Text>Forks: {item.item.forksCount}</Text>  
+            <Text>Stars: {item.item.stargazersCount}</Text> 
+            <Text>Rating: {item.item.ratingAverage}</Text> 
+            <Text>Reviews: {item.item.reviewCount}</Text> 
+            {/* <Text>ownerAvatarUrl: {item.item.ownerAvatarUrl}</Text>  */}
         </View>
     );
 };
