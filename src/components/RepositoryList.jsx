@@ -59,7 +59,7 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
   const renderItem = ({ item }) => (
-    <RepositoryItem item={item} />
+    <RepositoryItem repository={item} />
   );
 
   return (
