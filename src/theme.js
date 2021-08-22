@@ -22,6 +22,23 @@ const theme = {
       normal: '400',
       bold: '700',
     },   
+    appButton:
+    {
+        appButtonContainer: {
+            elevation: 8,
+            backgroundColor: '#0000FF',
+            borderRadius: 5,
+            paddingVertical: 5,
+            paddingHorizontal: 5
+        },
+        appButtonText: {
+            fontSize: 14,
+            color: '#fff',
+            fontWeight: 'normal',
+            alignSelf: 'center',
+            // textTransform: 'uppercase'
+        }
+    }
   };
   
   export default theme;

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import RepositoryItemImage from './RepositoryItemimage';
+import theme from '../theme';
 
 //Esimerkki
 //https://snack.expo.dev/@kalleilv/3d045d
@@ -9,49 +10,36 @@ const itemStyles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        paddingTop: 10,
+        paddingTop: 20,
         backgroundColor: '#ecf0f1',
-        padding: 8,
+        padding: 20,
+    },
+    bold: {
+        fontWeight: '700', 
     },
 });
 
 const itemHeaderStyles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        flexGrow: 1, 
-        // justifyContent: 'space-around',
-        // alignItems:'left',
-        // justifyContent:'left'
+        flexGrow: 1,
     },
-    //   image: {
-    //     width: 45,
-    //     height: 45,
-    //     borderRadius: 45 / 2,
-    //   },
-    image: { 
+    imageContainer: {
         flexGrow: 0,
-        // paddingRight: 15, 
-        alignItems:'left',
-        justifyContent:'left' 
-        // width: 50,
-        // height: 50,
-        // borderRadius: 45 / 2,
+        paddingRight: 15,
     },
-    // infocontainer: { 
-    //     flexGrow: 0,
-    //     padding: 110, 
-    //     margin: 110, 
-    //     borderColor: 'red',
-    //     borderStyle: 'solid',
-    //     borderWidth: 2,
-    //     width: 30,
-    // },
-    info: { 
-        justifyContent: 'space-around', 
-        marginLeft: 15,
-        flexGrow: 1,  
+    infocontainer: {
+        flexGrow: 1,
+        alignItems: 'left',
+        // paddingVertical: 15,
     },
-
+    buttonContainer:
+    {
+        flexDirection: 'row',
+        flexGrow: 0,
+        paddingTop: 20,
+        paddingBottom: 20, 
+    },
 });
 
 
@@ -61,12 +49,10 @@ const itemFooterStyles = StyleSheet.create({
         flexGrow: 1,
         justifyContent: 'space-around',
     },
-    // actionTouchable: {
-    //   flexGrow: 0,
-    // },
-    // actionText: {
-    //   textDecorationLine: 'underline',
-    // },
+    total: {
+        justifyContent: 'center',
+        alignItems: 'center' 
+    },  
 });
 
 
@@ -75,33 +61,31 @@ const RepositoryItem = (item) => {
         <>
             <View style={itemStyles.container}>
                 <RepositoryItemHeader item={item}></RepositoryItemHeader>
-                <RepositoryItemFooter item={item}></RepositoryItemFooter> 
+                <RepositoryItemFooter item={item}></RepositoryItemFooter>
             </View>
         </>
     );
 };
 
-
-{/* <RepositoryItemHeader item={item}></RepositoryItemHeader> */ }
+ 
 const RepositoryItemHeader = (props) => {
     const item = props.item;
     return (
         <>
             <View style={itemHeaderStyles.container}>
-                <View style={itemHeaderStyles.container.image}>
+                <View style={itemHeaderStyles.imageContainer}>
                     <RepositoryItemImage url={item.item.ownerAvatarUrl}></RepositoryItemImage>
                 </View>
-                <View style={itemHeaderStyles.container.infocontainer}> 
+                <View style={itemHeaderStyles.container.infocontainer}>
                     <View style={itemHeaderStyles.container.info}>
-                        <Text><b>{item.item.fullName}</b></Text>
-                        <Text>{item.item.description}</Text>
-                        {/* <Text>{item.item.language}</Text> */}
-                        <Button
-                            title={item.item.language}
-                            onPress={() => console.log('Button pressed')}
-                        />
-                    </View>
+                        <Text style={itemStyles.bold}>{item.item.fullName}</Text>
+                        <Text>{item.item.description}</Text>  
+                    </View> 
+                    <View style={itemHeaderStyles.buttonContainer}>
+                        <AppButton title={item.item.language} onPress={() => console.log('Button pressed')} />
+                    </View>  
                 </View>
+              
             </View>
         </>
     );
@@ -109,117 +93,59 @@ const RepositoryItemHeader = (props) => {
 
 const RepositoryItemFooter = (props) => {
     const item = props.item;
-
-    // console.log('item ', item);
-
+ 
     return (
         <>
             <View style={itemFooterStyles.container}>
-                <Text>Stars: {item.item.stargazersCount}</Text>
-                <Text>Forks: {item.item.forksCount}</Text>
-                <Text>Reviews: {item.item.reviewCount}</Text>
-                <Text>Rating: {item.item.ratingAverage}</Text>
+                <FooterTotal total={item.item.stargazersCount} text='Stars'></FooterTotal>
+                <FooterTotal total={item.item.forksCount} text='Forks'></FooterTotal>
+                <FooterTotal total={item.item.reviewCount} text='Reviews'></FooterTotal>
+                <FooterTotal total={item.item.ratingAverage} text='Rating'></FooterTotal> 
             </View>
         </>
     );
 };
 
+//malli: https://stackoverflow.com/questions/9461621/format-a-number-as-2-5k-if-a-thousand-or-more-otherwise-900
+function nFormatter(num) {
+    // if (num >= 1000000000) {
+    //    return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'g';
+    // }
+    // if (num >= 1000000) {
+    //    return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'm';
+    // }
+    if (num >= 1000) {
+       return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+    }
+    return num;
+}
 
-export default RepositoryItem;
+const FooterTotal = (props) => { 
+    const text = props.text;
+    const total = props.total;
+
+    let amountToShow = nFormatter(total); 
+
+    return (
+        <>
+         <View style={itemFooterStyles.total}>
+            <View> 
+                <Text style={itemStyles.bold}>{amountToShow}</Text> 
+            </View>
+            <View>
+                <Text>{text}</Text> 
+            </View>
+        </View>
+        </>
+    );
+};
 
 
 
-{/* <Text>Full name: {item.item.fullName}</Text> 
-            <Text>Description: {item.item.description}</Text> 
-            <Text>Language: {item.item.language}</Text> 
-            <Text>Forks: {item.item.forksCount}</Text>  
-            <Text>Stars: {item.item.stargazersCount}</Text> 
-            <Text>Rating: {item.item.ratingAverage}</Text> 
-            <Text>Reviews: {item.item.reviewCount}</Text>  */}
+const AppButton = ({ onPress, title }) => (
+    <TouchableOpacity onPress={onPress} style={theme.appButton.appButtonContainer}>
+      <Text style={theme.appButton.appButtonText}>{title}</Text>
+    </TouchableOpacity>
+  );
 
-// https://snack.expo.dev/@kalleilv/3d045d
-
-// const CardHeader = () => {
-//     return (
-//       <View style={cardHeaderStyles.container}>
-//         <View style={cardHeaderStyles.avatarContainer}>
-//           <Image style={cardHeaderStyles.avatar} source={require('../assets/avatar.png')} />
-//         </View>
-//         <View style={cardHeaderStyles.infoContainer}>
-//           <Text fontWeight="bold" fontSize="subheading">John Doe</Text>
-//           <Text color="textSecondary">Thursday 16.4. at 10:08</Text>
-//         </View>
-//       </View>
-//     );
-//   };
-
-//   const cardBodyStyles = StyleSheet.create({
-//     container: {
-//       paddingVertical: 15,
-//     }
-//   });
-
-//   const CardBody = () => {
-//     return (
-//       <View style={cardBodyStyles.container}>
-//         <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales molestie nisl, a elementum leo congue tempor. Aliquam erat volutpat. Aenean id pharetra orci.
-//         </Text>
-//       </View>
-//     );
-//   };
-
-//   const cardFooterStyles = StyleSheet.create({
-//     container: {
-//       flexDirection: 'row',
-//       flexGrow: 1,
-//       justifyContent: 'space-around',
-//     },
-//     actionTouchable: {
-//       flexGrow: 0,
-//     },
-//     actionText: {
-//       textDecorationLine: 'underline',
-//     },
-//   });
-
-//   const CardFooterAction = ({ children, ...props }) => {
-//     return (
-//       <TouchableWithoutFeedback style={cardFooterStyles.actionTouchable} {...props}>
-//         <Text color="textSecondary" style={cardFooterStyles.actionText}>{children}</Text>
-//       </TouchableWithoutFeedback>
-//     )
-//   };
-
-//   const CardFooter = () => {
-//     return (
-//       <View style={cardFooterStyles.container}>
-//         <CardFooterAction>
-//           Like
-//         </CardFooterAction>
-//         <CardFooterAction>
-//           Comment
-//         </CardFooterAction>
-//         <CardFooterAction>
-//           Share
-//         </CardFooterAction>
-//       </View>
-//     );
-//   };
-
-//   const cardStyles = StyleSheet.create({
-//     container: {
-//       alignItems: 'stretch',
-//     },
-//   });
-
-//   const Card = () => {
-//     return (
-//       <View style={cardStyles.container}>
-//         <CardHeader />
-//         <CardBody />
-//         <CardFooter />
-//       </View>
-//     );
-//   };
-
-//   export default Card;
+export default RepositoryItem; 

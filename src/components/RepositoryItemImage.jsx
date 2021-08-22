@@ -2,14 +2,19 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
+const repositoryItemImageStyles = StyleSheet.create({
     container: {
         paddingTop: 0,
     },
-    stretch: {
+    image: {
         width: 50,
         height: 50,
         resizeMode: 'stretch',
+        borderBottomLeftRadius: 5,
+        borderBottomRightRadius: 5,
+        borderTopLeftRadius: 5,
+        borderTopRightRadius: 5,
+        overflow: 'hidden',
     },
 });
 
@@ -17,9 +22,9 @@ const RepositoryItemImage = (props) => {
 
     const url = props.url;
     return (
-        <View style={styles.container} >
+        <View style={repositoryItemImageStyles.container} >
             <Image
-                style={styles.stretch}
+                style={repositoryItemImageStyles.image}
                 source={url}
             />
         </View>
