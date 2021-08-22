@@ -24,8 +24,8 @@ const RepositoryItemImage = (props) => {
     return (
         <View style={repositoryItemImageStyles.container} >
             <Image
-                style={repositoryItemImageStyles.image}
-                source={url}
+                style={repositoryItemImageStyles.image} 
+                source={{uri: url}}
             />
         </View>
     );

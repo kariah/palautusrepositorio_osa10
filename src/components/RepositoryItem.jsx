@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import RepositoryItemImage from './RepositoryItemimage';
+import RepositoryItemImage from './RepositoryItemImage.jsx';
 import theme from '../theme';
 
 //Esimerkki
@@ -29,9 +29,8 @@ const itemHeaderStyles = StyleSheet.create({
         paddingRight: 15,
     },
     infocontainer: {
-        flexGrow: 1,
-        alignItems: 'left',
-        // paddingVertical: 15,
+        flexGrow: 1,  
+        // alignItems: 'left' 
     },
     buttonContainer:
     {
