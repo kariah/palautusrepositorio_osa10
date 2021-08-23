@@ -1,5 +1,8 @@
 import React from 'react';
-import { Text, View, Pressable, StyleSheet } from 'react-native';
+// import { Text, View, Pressable, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
+import { Link } from "react-router-native";
+
 import theme from '../theme';
  
 const styles = StyleSheet.create({
@@ -8,19 +11,30 @@ const styles = StyleSheet.create({
         fontWeight: theme.appbar.fontWeight
     }, 
 });
+
+
+//kts. 
+//https://reactrouter.com/native/guides/quick-start
+//https://reactrouter.com/core/api/Switch
+
 const AppBarTab = (props) => {   
     const text = props.text;
+    const to = props.to;
 
     return (
-        <View>
-            <Pressable
+        <View> 
+         <Link
+            to={to} 
+        >
+            <Text style={styles.appBarTab}>{text}</Text>
+        </Link>
+            {/* <Pressable
                     onPress={() => console.log('You pressed Repositories')}>
                     <Text style={styles.appBarTab}>{text}</Text>
-                </Pressable>
+                </Pressable> */}
         </View>
     );
 };
-
-// style={styles.appBar}
+ 
 export default AppBarTab; 
  
