@@ -8,7 +8,9 @@ import theme from '../theme';
 const styles = StyleSheet.create({
     appBarTab: { 
         color: theme.appbar.color,
-        fontWeight: theme.appbar.fontWeight
+        fontWeight: theme.appbar.fontWeight,
+        paddingRight: 20,
+        paddingBottom: 5,
     }, 
 });
 
@@ -28,13 +30,15 @@ const AppBarTab = (props) => {
         >
             <Text style={styles.appBarTab}>{text}</Text>
         </Link>
-            {/* <Pressable
-                    onPress={() => console.log('You pressed Repositories')}>
-                    <Text style={styles.appBarTab}>{text}</Text>
-                </Pressable> */}
+          
         </View>
     );
 };
  
+{/* <Pressable
+onPress={() => console.log('You pressed Repositories')}>
+<Text style={styles.appBarTab}>{text}</Text>
+</Pressable> */}
+
 export default AppBarTab; 
  

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native'; 
+import { View, StyleSheet, ScrollView } from 'react-native'; 
 import AppBarTab from './AppBarTab';
 import theme from '../theme';
 
@@ -12,28 +12,21 @@ const styles = StyleSheet.create({
         fontWeight: theme.appbar.fontWeight,
         flexDirection: 'row',
         flexGrow: 1, 
-        justifyContent: 'space-around',
-    }, 
-    tab: {   
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center' 
-    }, 
+        // justifyContent: 'space-around',
+    },  
 });
 
 const AppBar = () => {
     return (
-        <> 
+        <>
             <View style={styles.container}>
-                <AppBarTab style={styles.tab} to='/' text='Repositories'></AppBarTab>
-                <AppBarTab style={styles.tab} to='/signin' text='Sign in'></AppBarTab>
-                {/* <Pressable
-                    onPress={() => console.log('You pressed Repositories')}>
-                    <Text style={styles.appBar}>Repositories</Text>
-                </Pressable> */}
+                <ScrollView horizontal>
+                    <AppBarTab to='/' text='Repositories'></AppBarTab>
+                    <AppBarTab to='/signin' text='Sign in'></AppBarTab>  
+                </ScrollView> 
             </View>
         </>
     );
 };
-
+ 
 export default AppBar;

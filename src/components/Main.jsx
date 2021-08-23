@@ -39,28 +39,4 @@ const Main = () => {
 };
 
 export default Main;
-
-{/* <Switch>
-<Route path="/" exact>
-  <View style={styles.container}> 
-    <RepositoryList></RepositoryList>
-  </View>
-</Route> 
-<Redirect to="/" />
-<Route path="/signin" exact>
-  <View style={styles.container}> 
-    <SignIn/> 
-  </View>
-</Route>
-<Redirect to="/" />
-</Switch>   */}
-
-{/* <Switch>
-<Route path="/" exact>
-  <RepositoryList />
-</Route>
-<Redirect to="/" />
-</Switch> 
-<View style={styles.container}> 
-<RepositoryList></RepositoryList>
-</View> */}
+ 
