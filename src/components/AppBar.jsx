@@ -11,8 +11,7 @@ const styles = StyleSheet.create({
         color: theme.appbar.color,
         fontWeight: theme.appbar.fontWeight,
         flexDirection: 'row',
-        flexGrow: 1, 
-        // justifyContent: 'space-around',
+        flexGrow: 1,  
     },  
 });
 
