@@ -38,7 +38,19 @@ const theme = {
             alignSelf: 'center',
             // textTransform: 'uppercase'
         }
+    },
+    inputField: {
+       color: 'red',
+       marginTop: 10,
+       paddingTop: 10,
+       paddingBottom: 10, 
+       paddingLeft: 10,
+       paddingRight: 10,
+       borderWidth: 1,
+       borderColor: '#232f34',
+       borderRadius: 4,
     }
+    
   };
   
   export default theme;
