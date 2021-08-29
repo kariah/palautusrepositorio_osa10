@@ -1,3 +1,7 @@
+import {
+  Platform
+} from 'react-native';
+
 const theme = {
   appbar: {
     paddingTop: 50,
@@ -6,6 +10,33 @@ const theme = {
     color: '#fff',
     fontWeight: '700',
   },
+
+  //Test
+  // appbar: 
+  // Platform.select({
+  // 	android: { 
+  //     paddingTop: 50,
+  //     paddingBottom: 20,
+  //     backgroundColor: 'red',
+  //     color:'black',
+  //     fontWeight: '700', 
+  //   },
+  //   ios: { 
+  //     paddingTop: 50,
+  //     paddingBottom: 20,
+  //     backgroundColor: 'blue',
+  //     color:'black',
+  //     fontWeight: '700', 
+  //   },
+  //   default: { 
+  //     paddingTop: 50,
+  //     paddingBottom: 20,
+  //     backgroundColor: 'green',
+  //     color:'black',
+  //     fontWeight: '700', 
+  //   }, 
+  // }), 
+
   colors: {
     textPrimary: '#24292e',
     textSecondary: '#586069',
@@ -14,14 +45,25 @@ const theme = {
   fontSizes: {
     body: 14,
     subheading: 16,
-  },
-  fonts: {
-    main: 'System',
-  },
+  }, 
+
+  fonts: Platform.select({
+    android: {
+      main: 'Roboto',
+      fontSize: 20,
+    },
+    ios: {
+      main: 'Arial'
+    },
+    default: {
+      main: 'System',
+    },
+  }),
   fontWeights: {
     normal: '400',
     bold: '700',
   },
+
   appButton: {
     appButtonContainer: {
       elevation: 8,
@@ -35,7 +77,6 @@ const theme = {
       color: '#fff',
       fontWeight: 'normal',
       alignSelf: 'center',
-      // textTransform: 'uppercase'
     }
   },
   inputField: {
@@ -51,7 +92,7 @@ const theme = {
   errorText: {
     marginTop: 5,
     color: '#d73a4a'
-  } 
+  }
 };
 
 export default theme;

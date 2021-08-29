@@ -6,7 +6,7 @@ import theme from '../theme';
 const styles = StyleSheet.create({
   text: {
     color: theme.colors.textPrimary,
-    fontSize: theme.fontSizes.body,
+    fontSize: theme.fontSizes.body, 
     fontFamily: theme.fonts.main,
     fontWeight: theme.fontWeights.normal,
   },
