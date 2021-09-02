@@ -1,6 +1,7 @@
-{
-  "expo": {
-    "name": "rate-repository-app",
+import 'dotenv/config';
+
+export default {
+    "name": "rate-repository-app", 
     "slug": "rate-repository-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -32,6 +33,10 @@
           "include": ["react-router-native"]
         }
       }
-    }
-  }
-}
+    }, 
+    "extra": {
+      env: process.env.ENV,
+      serviceUri: process.env.APOLLO_URI,
+    }, 
+  }; 
+  

@@ -20,10 +20,10 @@ const useRepositories = () => {
         fetchPolicy: 'cache-and-network',
     });
 
-    if (loading)
-    {
-        console.log('loading ...')
-    }
+    // if (loading)
+    // {
+    //     console.log('loading ...')
+    // }
 
     const fetchRepositories = async () => { 
         if (data) { 
