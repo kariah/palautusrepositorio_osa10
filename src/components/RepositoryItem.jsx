@@ -55,7 +55,7 @@ const itemFooterStyles = StyleSheet.create({
 });
 
 
-const RepositoryItem = (item) => {
+const RepositoryItem = (item) => { 
     return (
         <>
             <View style={itemStyles.container}>
