@@ -4,8 +4,9 @@ import FormikTextInput from './FormikTextInput';
 import { StyleSheet, View, Pressable, Text } from 'react-native';
 import { Formik } from 'formik';
 import theme from '../theme';
-import useSignIn from '../hooks/useSignIn';
+import useSignIn from '../hooks/useSignIn'; 
 import * as yup from 'yup';
+import AuthStorage from '../utils/authStorage';
 
 //Malli
 //https://snack.expo.dev/@kalleilv/formik-example
@@ -65,8 +66,14 @@ const SignIn = () => {
     const { username, password } = values;
 
     try {
-      const { data } = await signIn({ username, password });
-      console.log('data: ', data);
+      const { data } = await signIn({ username, password });  
+
+      const authStorage = new AuthStorage();
+      await authStorage.setAccessToken(data.authorize);  
+
+      // const test = await authStorage.getAccessToken();
+      // console.log('test ', test.accessToken);
+
     } catch (e) {
       console.log(e);
     }

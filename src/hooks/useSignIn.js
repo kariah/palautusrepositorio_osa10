@@ -12,10 +12,9 @@ const useSignIn = () => {
     const signIn = async ({
         username,
         password
-    }) => {
-        // console.log('username ', username, 'password ', password)
- 
-        return await mutate({ variables: { credentials: { username, password } } })
+    }) => {   
+        const result = await mutate({ variables: { credentials: { username, password }}}); 
+        return result;
     };
 
     return [signIn, result];
