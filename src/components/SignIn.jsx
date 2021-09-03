@@ -2,13 +2,14 @@ import React from 'react';
 // import Text from './Text'; 
 import FormikTextInput from './FormikTextInput';
 import { StyleSheet, View, Pressable, Text } from 'react-native';
-import { Formik, useField } from 'formik';
+import { Formik } from 'formik';
 import theme from '../theme';
+import useSignIn from '../hooks/useSignIn';
 import * as yup from 'yup';
 
 //Malli
 //https://snack.expo.dev/@kalleilv/formik-example
- 
+
 const itemHeaderStyles = StyleSheet.create({
   fieldsContainer: {
     flexGrow: 1,
@@ -27,7 +28,7 @@ const itemHeaderStyles = StyleSheet.create({
 const validationSchema = yup.object().shape({
   username: yup
     .string()
-    .email("Please enter username")
+    // .email("Please enter username")
     .required('Username is Required'),
   password: yup
     .string()
@@ -56,17 +57,26 @@ const initialValues = {
 };
 
 
-const SignIn = () => {
-  const onSubmit = values => {
-    const username = values.username;
-    const password = values.password;
-    console.log(values);
+const SignIn = () => { 
+
+  const [signIn] = useSignIn();
+
+  const onSubmit = async (values) => {
+    const { username, password } = values;
+
+    try {
+      const { data } = await signIn({ username, password });
+      console.log('data: ', data);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
+
   return (
-    <Formik initialValues={initialValues} 
-            onSubmit={onSubmit}
-            validationSchema={validationSchema}>
+    <Formik initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}>
       {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
     </Formik>
   );

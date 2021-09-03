@@ -85,20 +85,14 @@ const RepositoryList = () => {
 
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
-    : [];
-
-  // return (
-  //   <FlatList
-  //     data={repositoryNodes}
-  //     // Other props
-  //   />
-  // );
+    : []; 
+ 
 
   const renderItem = ({ item }) => (
     <RepositoryItem item={item} />
   );
 
-  console.log('repositoryNodes ', repositoryNodes);
+  // console.log('repositoryNodes ', repositoryNodes);
 
   return (
     <FlatList
