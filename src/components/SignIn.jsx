@@ -65,14 +65,13 @@ const SignIn = () => {
   const onSubmit = async (values) => {
     const { username, password } = values;
 
-    try {
-      const { data } = await signIn({ username, password });  
-
-      const authStorage = new AuthStorage();
-      await authStorage.setAccessToken(data.authorize);  
-
-      // const test = await authStorage.getAccessToken();
-      // console.log('test ', test.accessToken);
+    try {  
+      await signIn({ username, password });    
+      
+      //testi
+      //const authStorage = new AuthStorage();  
+      // const accessToken = await authStorage.getAccessToken();
+      // console.log('accessToken ', accessToken);
 
     } catch (e) {
       console.log(e);

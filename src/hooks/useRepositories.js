@@ -17,7 +17,7 @@ const useRepositories = () => {
         error,
         loading
     } = useQuery(GET_REPOSITORIES, {
-        fetchPolicy: 'cache-and-network',
+        fetchPolicy: 'cache-and-network', 
     });
 
     // if (loading)
@@ -25,8 +25,8 @@ const useRepositories = () => {
     //     console.log('loading ...')
     // }
 
-    const fetchRepositories = async () => { 
-        if (data) { 
+    const fetchRepositories = async () => {  
+        if (data) {   
             setRepositories(data.repositories);
         } 
     };
