@@ -69,9 +69,9 @@ const SignIn = () => {
       await signIn({ username, password });    
       
       //testi
-      //const authStorage = new AuthStorage();  
-      // const accessToken = await authStorage.getAccessToken();
-      // console.log('accessToken ', accessToken);
+      const authStorage = new AuthStorage();  
+      const accessToken = await authStorage.getAccessToken();
+      console.log('accessToken ', accessToken);
 
     } catch (e) {
       console.log(e);
