@@ -6,7 +6,8 @@ import { Formik } from 'formik';
 import theme from '../theme';
 import useSignIn from '../hooks/useSignIn'; 
 import * as yup from 'yup';
-import AuthStorage from '../utils/authStorage';
+import { useHistory } from 'react-router-native'; 
+import AuthStorageContext from '../contexts/AuthStorageContext'; 
 
 //Malli
 //https://snack.expo.dev/@kalleilv/formik-example
@@ -61,17 +62,27 @@ const initialValues = {
 const SignIn = () => { 
 
   const [signIn] = useSignIn();
-
+  let history = useHistory();
+ 
   const onSubmit = async (values) => {
     const { username, password } = values;
 
     try {  
-      await signIn({ username, password });    
+      const { data } = await signIn({ username, password });    
       
+      // console.log('data after signIn ', data) 
+        
+      if (data.authorizedUser !== null)
+      {
+        history.push("/");
+      }
+      
+      location.reload();
+
       //testi
-      const authStorage = new AuthStorage();  
-      const accessToken = await authStorage.getAccessToken();
-      console.log('accessToken ', accessToken);
+      // const authStorage = useContext(AuthStorageContext); 
+      // const accessToken = await authStorage.getAccessToken();
+      // console.log('accessToken ', accessToken);
 
     } catch (e) {
       console.log(e);

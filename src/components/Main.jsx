@@ -7,7 +7,6 @@ import SignIn from './SignIn';
 import AppBar from './AppBar';
 
 
-
 const styles = StyleSheet.create({
   container: {
     // marginTop: Constants.statusBarHeight,

@@ -22,11 +22,12 @@ const styles = StyleSheet.create({
 const AppBarTab = (props) => {   
     const text = props.text;
     const to = props.to;
+    const onPress = props.onPress
 
     return (
         <View> 
          <Link
-            to={to} 
+            to={to} onPress={onPress}
         >
             <Text style={styles.appBarTab}>{text}</Text>
         </Link>
