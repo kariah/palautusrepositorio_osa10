@@ -14,12 +14,11 @@ const FormikTextInput = ({ name, ...props }) => {
   return (
     <>
       <TextInput
-        onChangeText={value => helpers.setValue(value)}
+        style={undefined} onChangeText={value => helpers.setValue(value)}
         onBlur={() => helpers.setTouched(true)}
         value={field.value}
         error={showError}
-        {...props}
-      />
+        {...props}      />
       {showError && <Text style={theme.errorText}>{meta.error}</Text>}
     </>
   );

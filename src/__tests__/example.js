@@ -45,7 +45,7 @@ const Form = ({ onSubmit }) => {
 };
 
 describe("Form", () => {
-  it.only("calls function provided by onSubmit prop after pressing the submit button", () => {
+  it("calls function provided by onSubmit prop after pressing the submit button", () => {
     const onSubmit = jest.fn();
     const { getByTestId } = render(<Form onSubmit={onSubmit} />);
 

@@ -75,13 +75,14 @@ const RepositoryItemHeader = (props) => {
         </View>
         <View style={itemHeaderStyles.container.infocontainer}>
           <View style={itemHeaderStyles.container.info}>
-            <Text style={itemStyles.bold}>{item.item.fullName}</Text>
-            <Text>{item.item.description}</Text>
+            <Text style={itemStyles.bold} testID="fullName">{item.item.fullName}</Text>
+            <Text testID="description">{item.item.description}</Text>
           </View>
           <View style={itemHeaderStyles.buttonContainer}>
             <AppButton
               title={item.item.language}
               onPress={() => console.log("Button pressed")}
+              testID="language"
             />
           </View>
         </View>
@@ -99,12 +100,14 @@ const RepositoryItemFooter = (props) => {
         <FooterTotal
           total={item.item.stargazersCount}
           text="Stars"
+          testID="stargazersCount"
         ></FooterTotal>
-        <FooterTotal total={item.item.forksCount} text="Forks"></FooterTotal>
-        <FooterTotal total={item.item.reviewCount} text="Reviews"></FooterTotal>
+        <FooterTotal total={item.item.forksCount} text="Forks" testID="forksCount"></FooterTotal>
+        <FooterTotal total={item.item.reviewCount} text="Reviews" testID="reviewCount"></FooterTotal>
         <FooterTotal
           total={item.item.ratingAverage}
           text="Rating"
+          testID="ratingAverage"
         ></FooterTotal>
       </View>
     </>
@@ -128,6 +131,7 @@ function nFormatter(num) {
 const FooterTotal = (props) => {
   const text = props.text;
   const total = props.total;
+  const testID = props.testID;
 
   let amountToShow = nFormatter(total);
 
@@ -135,7 +139,7 @@ const FooterTotal = (props) => {
     <>
       <View style={itemFooterStyles.total}>
         <View>
-          <Text style={itemStyles.bold}>{amountToShow}</Text>
+          <Text style={itemStyles.bold} testID={testID}>{amountToShow}</Text>
         </View>
         <View>
           <Text>{text}</Text>
@@ -145,10 +149,11 @@ const FooterTotal = (props) => {
   );
 };
 
-const AppButton = ({ onPress, title }) => (
+const AppButton = ({ onPress, title, testID }) => (
   <TouchableOpacity
     onPress={onPress}
     style={theme.appButton.appButtonContainer}
+    testID={testID}
   >
     <Text style={theme.appButton.appButtonText}>{title}</Text>
   </TouchableOpacity>
