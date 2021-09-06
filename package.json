@@ -30,7 +30,11 @@
   "devDependencies": {
     "@babel/core": "~7.9.0",
     "@expo/webpack-config": "^0.14.1",
+    "@testing-library/jest-native": "^4.0.2",
+    "@testing-library/react-native": "^7.2.0",
+    "@types/jest": "^27.0.1",
     "@types/react": "^17.0.19",
+    "@types/react-native": "^0.64.13",
     "@types/react-router-dom": "^5.1.8",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
@@ -46,6 +50,9 @@
     },
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*|react-router-native)"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.js"
     ]
   },
   "private": true
