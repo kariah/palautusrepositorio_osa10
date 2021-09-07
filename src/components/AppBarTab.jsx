@@ -1,5 +1,4 @@
-import React from "react";
-// import { Text, View, Pressable, StyleSheet } from 'react-native';
+import React from "react"; 
 import { View, StyleSheet, Text } from "react-native";
 import { Link } from "react-router-native";
 
