@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { useField } from 'formik';
 
 import TextInput from './TextInput';
@@ -17,7 +16,7 @@ const FormikTextInput = ({ name, ...props }) => {
         style={undefined} onChangeText={value => helpers.setValue(value)}
         onBlur={() => helpers.setTouched(true)}
         value={field.value}
-        error={showError}
+        error={showError} 
         {...props}      />
       {showError && <Text style={theme.errorText}>{meta.error}</Text>}
     </>
