@@ -1,6 +1,7 @@
 import React from 'react'; 
 import { render } from '@testing-library/react-native';
 import RepositoryListContainer from '../../components/RepositoryListContainer';
+import 'react-testing-library/extend-expect';
 
 describe('RepositoryList', () => {
     describe('RepositoryListContainer', () => {

@@ -30,6 +30,7 @@
   "devDependencies": {
     "@babel/core": "~7.9.0",
     "@expo/webpack-config": "^0.14.1",
+    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/jest-native": "^4.0.2",
     "@testing-library/react-native": "^7.2.0",
     "@types/jest": "^27.0.1",
