@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\graphql",
+    "\\src\\hooks",
+    "\\src\\__tests__",
+    "\\src\\__tests__\\components"
+  ],
+  "SelectedNode": "\\src\\graphql\\queries.js",
+  "PreviewInSolutionExplorer": false
+}
