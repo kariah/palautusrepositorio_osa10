@@ -7,13 +7,17 @@ import { useParams } from "react-router";
 const Repository = () => {   
     let { id } = useParams();
 
-    const { repository } = useRepository(id); 
+    const { repository, loading } = useRepository(id);
+     
+    if (loading) {
+        return <Text>loading ...</Text>
+    }
 
-    console.log('repository after useRepository ', repository)
+    console.log('repository after useRepository ', repository)    
 
     return (
         <View>
-            <RepositoryContainer repository={repository}></RepositoryContainer>
+             <RepositoryContainer repository={repository}></RepositoryContainer> 
         </View>
     );
 };
