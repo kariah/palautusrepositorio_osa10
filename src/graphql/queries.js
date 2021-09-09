@@ -23,31 +23,7 @@ export const GET_REPOSITORY = gql`
             language
      }
   }
-`;
-
-
-
-//export const GET_REPOSITORY = gql` 
-//   query {
-//          repository(id: "jaredpalmer.formik") {
-//            id
-//            fullName
-//            url
-//            name
-//            description
-//            fullName
-//            ratingAverage
-//            reviewCount
-//            stargazersCount
-//            watchersCount
-//            forksCount
-//            openIssuesCount
-//            ownerAvatarUrl
-//            description
-//            language
-//      }
-//  }
-//`;
+`; 
  
 
 export const GET_REPOSITORIES = gql`
