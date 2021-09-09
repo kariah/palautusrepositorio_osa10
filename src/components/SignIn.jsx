@@ -18,10 +18,7 @@ const SignIn = () => {
  
       if (data.authorizedUser !== null) {
         history.push("/");
-      }
-
-      location.reload();
- 
+      } 
     } catch (e) {
       console.log(e);
     }
