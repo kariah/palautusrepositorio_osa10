@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity, Pressable } from "react-nativ
 import * as Linking from 'expo-linking';
 import RepositoryItemImage from "./RepositoryItemImage.jsx";
 import { useHistory } from "react-router-native";
-import theme from "../theme"; 
+import theme from "../theme";
 
 //Esimerkki
 //https://snack.expo.dev/@kalleilv/3d045d
@@ -54,15 +54,15 @@ const itemFooterStyles = StyleSheet.create({
     },
 });
 
- 
+
 
 const openRepository = (id, history) => {
-    const url = `../repository/${id}`; 
+    const url = `../repository/${id}`;
     history.push(url);
 };
 
-const RepositoryItem = (item) => { 
-    let history = useHistory(); 
+const RepositoryItem = (item) => {
+    let history = useHistory();
 
     return (
         <>
