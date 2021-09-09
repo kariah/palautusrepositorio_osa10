@@ -1,11 +1,10 @@
-import React from 'react';
-// import Constants from 'expo-constants';
+import React from 'react'; 
 import { StyleSheet, View } from 'react-native';
 import { Route, Switch, Redirect } from 'react-router-native';
 import RepositoryList from './RepositoryList';
 import SignIn from './SignIn';
 import AppBar from './AppBar';
-import Repository from './Repository'; 
+import SingleRepository from './SingleRepository';
 
 const styles = StyleSheet.create({
     container: { 
@@ -27,7 +26,7 @@ const Main = () => {
                 </Route>
                 <Route path="/repository/:id">
                     <View style={styles.container}>
-                        <Repository />
+                        <SingleRepository />
                     </View>
                 </Route>
                 <Route exact path="/">

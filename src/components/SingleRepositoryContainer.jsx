@@ -19,10 +19,9 @@ const itemStyles = StyleSheet.create({
     },
 });
 
-const RepositoryContainer = ({ repository }) => {
+const SingleRepositoryContainer = ({ repository }) => {
     const openUrl = (url) => {
-        Linking.openURL(url);
-        //this.props.onPress && this.props.onPress();
+        Linking.openURL(url); 
     };
 
     return (
@@ -40,4 +39,4 @@ const RepositoryContainer = ({ repository }) => {
     );
 };
 
-export default RepositoryContainer;
+export default SingleRepositoryContainer;
