@@ -1,6 +1,5 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Pressable } from "react-native";
-import * as Linking from 'expo-linking';
 import RepositoryItemImage from "./RepositoryItemImage.jsx";
 import { useHistory } from "react-router-native";
 import theme from "../theme";
@@ -103,10 +102,7 @@ const RepositoryItemHeader = (props) => {
         </>
     );
 };
-
-
-//Open in github 
-//Linking.openURL(url);/
+ 
 
 const RepositoryItemFooter = (props) => {
     const item = props.item;
