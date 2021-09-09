@@ -62,8 +62,7 @@ const theme = {
   fontWeights: {
     normal: '400',
     bold: '700',
-  },
-
+  }, 
   appButton: {
     appButtonContainer: {
       elevation: 8,

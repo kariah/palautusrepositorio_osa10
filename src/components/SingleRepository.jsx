@@ -9,6 +9,7 @@ import { useParams } from "react-router";
 const styles = StyleSheet.create({
     separator: {
         height: 10,
+        backgroundColor: "#ecf0f1"
     },
 });
 
@@ -18,20 +19,11 @@ const ItemSeparator = () => <View style={styles.separator} />;
 const RepositoryInfo = ({ repository }) => {
     return (
         <View>
-            <SingleRepositoryContainer repository={repository}></SingleRepositoryContainer>
+            <SingleRepositoryContainer repository={repository}></SingleRepositoryContainer> 
         </View>
     );
 };
-
-//const ReviewItem = ({ review }) => {
-//    console.log("review ", review);
-
-//    return (
-//        <View>
-//            <Text>{review.createdAt}</Text>
-//        </View>
-//    );
-//};
+ 
 
 const SingleRepository = () => {
     let { id } = useParams();
@@ -44,13 +36,12 @@ const SingleRepository = () => {
 
     const reviews = repository
         ? repository.reviews.edges.map((edge) => edge.node)
-        : [];
-
-    //console.log('reviews ', reviews); 
+        : []; 
 
     return (
         <FlatList
             data={reviews}
+            ItemSeparatorComponent={ItemSeparator}
             renderItem={({ item }) => <ReviewItem review={item} />}
             keyExtractor={({ id }) => id}
             ListHeaderComponent={() => <RepositoryInfo repository={repository} />}

@@ -14,6 +14,7 @@ const itemStyles = StyleSheet.create({
         paddingTop: 20,
         backgroundColor: "#ecf0f1",
         padding: 20,
+        paddingRight: 100
     },
     bold: {
         fontWeight: "700",
@@ -30,8 +31,7 @@ const itemHeaderStyles = StyleSheet.create({
         paddingRight: 15,
     },
     infocontainer: {
-        flexGrow: 1,
-        // alignItems: 'left'
+        flexGrow: 1, 
     },
     buttonContainer: {
         flexDirection: "row",
