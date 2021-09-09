@@ -1,15 +1,41 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import RepositoryItem from "./RepositoryItem";
+import * as Linking from 'expo-linking';
+import theme from "../theme";
 
-const RepositoryContainer = ({ repository }) => { 
+
+
+const itemStyles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        paddingTop: 20,
+        backgroundColor: "#ecf0f1",
+        padding: 20,
+    }, 
+    bold: {
+        fontWeight: "700",
+    },
+});
+
+const RepositoryContainer = ({ repository }) => {
+    const openUrl = (url) => {
+        Linking.openURL(url);
+        //this.props.onPress && this.props.onPress();
+    };
 
     return (
-        <View>
+        <View style={itemStyles.container}>
             <RepositoryItem item={repository} />
-            <TouchableOpacity>
-                <Text>Open in github</Text>
-            </TouchableOpacity>
+            <View style={itemStyles.buttonContainer}>
+                <TouchableOpacity onPress={() => openUrl(repository.url)}
+                    style={theme.appButton.appButtonContainer} >
+                    <Text style={theme.appButton.appButtonText}>
+                        Open in GitHub
+                    </Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };

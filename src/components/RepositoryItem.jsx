@@ -56,7 +56,7 @@ const itemFooterStyles = StyleSheet.create({
 
  
 
-const testing = (id, history) => {
+const openRepository = (id, history) => {
     const url = `../repository/${id}`; 
     history.push(url);
 };
@@ -67,7 +67,7 @@ const RepositoryItem = (item) => {
     return (
         <>
             <View style={itemStyles.container}>
-                <Pressable onPress={() => testing(item.item.id, history)} >
+                <Pressable onPress={() => openRepository(item.item.id, history)} >
                     <RepositoryItemHeader item={item}></RepositoryItemHeader>
                     <RepositoryItemFooter item={item}></RepositoryItemFooter>
                 </Pressable>

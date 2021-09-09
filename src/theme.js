@@ -76,7 +76,8 @@ const theme = {
       fontSize: 14,
       color: '#fff',
       fontWeight: 'normal',
-      alignSelf: 'center',
+        alignSelf: 'center',
+        padding: 5,
     }
   },
   inputField: {
