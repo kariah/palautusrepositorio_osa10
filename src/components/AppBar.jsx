@@ -35,11 +35,15 @@ const AppBar = () => {
         return <>loading ...</>;
     }
 
-    const UserTab = () => {
+    const UserTabs = () => {
         if (data.authorizedUser === null || data.authorizedUser.id === null) {
             return <AppBarTab to="/signin" text="Sign in"></AppBarTab>;
         } else {
-            return <AppBarTab onPress={() => signOut()} text="Sign out"></AppBarTab>;
+            return (
+                <>
+                    <AppBarTab to="/review" text="Create a Review"></AppBarTab>
+                    <AppBarTab onPress={() => signOut()} text="Sign out"></AppBarTab>
+                </>);
         }
     };
 
@@ -48,7 +52,7 @@ const AppBar = () => {
             <View style={styles.container}>
                 <ScrollView horizontal>
                     <AppBarTab to="/" text="Repositories"></AppBarTab>
-                    <UserTab></UserTab>
+                    <UserTabs></UserTabs>
                 </ScrollView>
             </View>
         </>
