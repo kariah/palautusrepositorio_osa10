@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 import SingleRepositoryContainer from "./SingleRepositoryContainer.jsx";
-import ReviewItem from "./ReviewItem.jsx";
-import useRepository from "../hooks/useRepository";
+import ReviewItem from "../Review/ReviewItem.jsx";
+import useRepository from "../../hooks/useRepository";
 import { useParams } from "react-router";
 
 

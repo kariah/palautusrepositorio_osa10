@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Pressable } from "react-native";
 import RepositoryItemImage from "./RepositoryItemImage.jsx";
 import { useHistory } from "react-router-native";
-import theme from "../theme";
+import theme from "../../theme";
 
 //Esimerkki
 //https://snack.expo.dev/@kalleilv/3d045d
@@ -38,6 +38,8 @@ const itemHeaderStyles = StyleSheet.create({
         flexGrow: 0,
         paddingTop: 20,
         paddingBottom: 20,
+    },
+    info: { 
     },
 });
 
@@ -85,8 +87,8 @@ const RepositoryItemHeader = (props) => {
                         url={item.item.ownerAvatarUrl}
                     ></RepositoryItemImage>
                 </View>
-                <View style={itemHeaderStyles.container.infocontainer}>
-                    <View style={itemHeaderStyles.container.info}>
+                <View style={itemHeaderStyles.infocontainer}>
+                    <View style={itemHeaderStyles.info}>
                         <Text style={itemStyles.bold} testID="fullName">{item.item.fullName}</Text>
                         <Text testID="description">{item.item.description}</Text>
                     </View>

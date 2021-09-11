@@ -1,10 +1,10 @@
 import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import AppBarTab from "./AppBarTab";
-import theme from "../theme";
+import theme from "../../theme";
 import { useQuery } from "@apollo/client";
-import { GET_AUTHORIZED_USER } from "../graphql/queries";
-import AuthStorageContext from "../contexts/AuthStorageContext";
+import { GET_AUTHORIZED_USER } from "../../graphql/queries";
+import AuthStorageContext from  "../../contexts/AuthStorageContext";
 
 const styles = StyleSheet.create({
     container: {

@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { Link } from "react-router-native";
 
-import theme from "../theme";
+import theme from "../../theme";
 
 const styles = StyleSheet.create({
   appBarTab: {
@@ -30,12 +30,5 @@ const AppBarTab = (props) => {
     </View>
   );
 };
-
-{
-  /* <Pressable
-onPress={() => console.log('You pressed Repositories')}>
-<Text style={styles.appBarTab}>{text}</Text>
-</Pressable> */
-}
-
+ 
 export default AppBarTab;

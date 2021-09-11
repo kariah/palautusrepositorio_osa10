@@ -1,9 +1,12 @@
 import React from "react";
-import useSignIn from "../hooks/useSignIn";
+import useSignIn from "../../hooks/useSignIn";
 import { useHistory } from "react-router-native";
-import ReviewFormContainer from "./ReviewFormContainer";
+import SignInContainer from "./SignInContainer";
 
-const ReviewForm = () => {
+//Malli
+//https://snack.expo.dev/@kalleilv/formik-example
+
+const SignIn = () => {
     const [signIn] = useSignIn();
     let history = useHistory();
 
@@ -12,8 +15,8 @@ const ReviewForm = () => {
 
         try {
             const { data } = await signIn({ username, password });
-
-            if (data.authorizedUser !== null) {
+ 
+            if (data.authorizedUser !== null) { 
                 history.push('/')
             }
         } catch (e) {
@@ -22,8 +25,8 @@ const ReviewForm = () => {
     };
 
     return (
-        <ReviewFormContainer onSubmit={onSubmit}></ReviewFormContainer>
+        <SignInContainer onSubmit={onSubmit}></SignInContainer>
     );
 };
 
-export default ReviewForm;
+export default SignIn;

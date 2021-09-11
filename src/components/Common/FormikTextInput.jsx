@@ -1,8 +1,8 @@
 import React from 'react';
 import { useField } from 'formik'; 
 import TextInput from './TextInput';
-import Text from './Text';
-import theme from '../theme';
+import Text from './Text.jsx';
+import theme from '../../theme';
  
 const FormikTextInput = ({ name, ...props }) => {
   const [field, meta, helpers] = useField(name);

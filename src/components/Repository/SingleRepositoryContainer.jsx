@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import RepositoryItem from "./RepositoryItem";
 import * as Linking from 'expo-linking';
-import theme from "../theme";
+import theme from "../../theme";
 
 
 

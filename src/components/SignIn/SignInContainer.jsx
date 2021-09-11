@@ -1,8 +1,8 @@
 import React from "react";
-import FormikTextInput from "./FormikTextInput";
+import FormikTextInput from "../Common/FormikTextInput";
 import { StyleSheet, View, Pressable, Text } from "react-native";
 import { Formik } from "formik";
-import theme from "../theme";
+import theme from "../../theme";
 import * as yup from "yup";
 
 export const SignInContainer = ({ onSubmit }) => {
