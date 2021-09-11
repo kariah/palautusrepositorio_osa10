@@ -1,20 +1,34 @@
 import React from "react";
-import useSignIn from "../../hooks/useSignIn";
+import useReview from "../../hooks/useReview";
 import { useHistory } from "react-router-native";
 import ReviewFormContainer from "../Review/ReviewFormContainer";
 
 const ReviewForm = () => {
-    const [signIn] = useSignIn();
+    const [createReview] = useReview();
     let history = useHistory();
 
-    const onSubmit = async (values) => {
-        const { username, password } = values;
+    const onSubmit = async (values) => { 
+        const {
+            repositoryName,
+            ownerName,
+            rating,
+            text
+        }
+            = values;
 
-        try {
-            const { data } = await signIn({ username, password });
 
-            if (data.authorizedUser !== null) {
-                history.push('/')
+        console.log('values ', values);
+
+        try { 
+            const { data } = await createReview({
+                repositoryName,
+                ownerName,
+                rating,
+                text
+            }); 
+
+            if (data !== null) {
+                history.push(`/repository/${values.ownerName}.${values.repositoryName}`);
             }
         } catch (e) {
             console.log(e);

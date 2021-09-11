@@ -22,29 +22,38 @@ export const ReviewFormContainer = ({ onSubmit }) => {
     });
 
     const validationSchema = yup.object().shape({
-        username: yup
-            .string()
-            // .email("Please enter username")
-            .required("Username is Required"),
-        password: yup
-            .string()
-            .min(3, ({ min }) => `Password must be at least ${min} characters`)
-            .required("Password is required"),
+        repositoryName: yup
+            .string() 
+            .required("RepositoryName is required"),
+
+        ownerName: yup
+            .string() 
+            .required("Owner name is required"),
+
+        rating: yup
+            .number()
+            .required("Rating is required (0-100)")
+            .min(0, "Minimum rating is 0")
+            .max(100, "Maximum rating is 100"), 
+
+        text: yup
+            .string() 
+            .notRequired(),
     });
 
-    const SignInForm = ({ onSubmit }) => {
+    const ReviewForm = ({ onSubmit }) => {
         return (
             <View>
                 <View style={itemHeaderStyles.fieldsContainer}>
                     <FormikTextInput
                         style={theme.inputField}
-                        name="username"
+                        name="repositoryName"
                         placeholder="Repository owner name"
                         testID ="repositoryOwnerField"
                     />
                     <FormikTextInput
                         style={theme.inputField}
-                        name="password"
+                        name="ownerName"
                         placeholder="Repository name" 
                         testID="repositoryNameField"
                     />
@@ -56,8 +65,8 @@ export const ReviewFormContainer = ({ onSubmit }) => {
                     />
                     <FormikTextInput
                         style={theme.inputField}
-                        name="review"
-                        placeholder="Reviw" 
+                        name="text"
+                        placeholder="Review" 
                         testID="reviewField"
                     />
                 </View>
@@ -75,8 +84,10 @@ export const ReviewFormContainer = ({ onSubmit }) => {
     };
 
     const initialValues = {
-        username: "",
-        password: "",
+        ownerName: "jaredpalmer",
+        repositoryName: "formik",
+        rating: 10,
+        text: "ihan ok"
     };
 
     return (
@@ -85,7 +96,7 @@ export const ReviewFormContainer = ({ onSubmit }) => {
             onSubmit={onSubmit}
             validationSchema={validationSchema}
         >
-            {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
+            {({ handleSubmit }) => <ReviewForm onSubmit={handleSubmit} />}
         </Formik>
     );
 };
