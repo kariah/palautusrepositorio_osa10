@@ -39,24 +39,35 @@ export const ReviewFormContainer = ({ onSubmit }) => {
                     <FormikTextInput
                         style={theme.inputField}
                         name="username"
-                        placeholder="Username"
-                        testID="usernameField"
+                        placeholder="Repository owner name"
+                        testID ="repositoryOwnerField"
                     />
                     <FormikTextInput
                         style={theme.inputField}
                         name="password"
-                        placeholder="Password"
-                        secureTextEntry={true}
-                        testID="passwordField"
+                        placeholder="Repository name" 
+                        testID="repositoryNameField"
+                    />
+                    <FormikTextInput
+                        style={theme.inputField}
+                        name="rating"
+                        placeholder="Rating between 0 and 100" 
+                        testID="ratingField"
+                    />
+                    <FormikTextInput
+                        style={theme.inputField}
+                        name="review"
+                        placeholder="Reviw" 
+                        testID="reviewField"
                     />
                 </View>
                 <View style={itemHeaderStyles.buttonContainer}>
                     <Pressable
                         onPress={onSubmit}
                         style={theme.appButton.appButtonContainer}
-                        testID="signInButton"
+                        testID="createReviewButton"
                     >
-                        <Text style={theme.appButton.appButtonText}>Sign in</Text>
+                        <Text style={theme.appButton.appButtonText}>Create a review</Text>
                     </Pressable>
                 </View>
             </View>

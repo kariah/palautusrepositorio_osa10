@@ -1,8 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { format, parseISO } from 'date-fns'
-//import theme from "../theme";
-
+import { format, parseISO } from 'date-fns'   
 
 const itemStyles = StyleSheet.create({
     container: {
