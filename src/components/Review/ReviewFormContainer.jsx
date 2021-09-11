@@ -84,10 +84,10 @@ export const ReviewFormContainer = ({ onSubmit }) => {
     };
 
     const initialValues = {
-        ownerName: "jaredpalmer",
-        repositoryName: "formik",
-        rating: 10,
-        text: "ihan ok"
+        ownerName: "",
+        repositoryName: "",
+        rating: "",
+        text: ""
     };
 
     return (

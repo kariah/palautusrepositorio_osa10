@@ -18,8 +18,7 @@ const itemStyles = StyleSheet.create({
 
 const reviewItemStyles = StyleSheet.create({
     container: {
-        flexDirection: "row",
-       /* alignItems: "left",*/
+        flexDirection: "row", 
     },
     ratingValueContainer: {
         flexGrow: 0,
