@@ -19,4 +19,12 @@ export const CREATE_REVIEW = gql`
 ${REVIEW_INFO}
 `; 
 
+export const CREATE_USER = gql`
+  mutation createUser($user: CreateUserInput) {
+    createUser(user: $user) {
+       id
+       username
+    }
+  }
+`;
  

@@ -32,6 +32,10 @@ export const SignInContainer = ({ onSubmit }) => {
       .required("Password is required"),
   });
 
+
+//Malli
+//https://snack.expo.dev/@kalleilv/formik-example
+
   const SignInForm = ({ onSubmit }) => {
     return (
       <View>

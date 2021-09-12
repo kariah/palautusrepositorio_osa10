@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 import { useContext } from "react";
 
 const AppBar = () => {
-    const authStorage = useContext(AuthStorageContext);
+    const authStorage = useContext(AuthStorageContext); 
 
     const signOut = async () => {
         await authStorage.removeAccessToken();
@@ -35,9 +35,15 @@ const AppBar = () => {
         return <>loading ...</>;
     }
 
+    const authorizedUser = data ? data.authorizedUser : null; 
+
     const UserTabs = () => {
-        if (data.authorizedUser === null || data.authorizedUser.id === null) {
-            return <AppBarTab to="/signin" text="Sign in"></AppBarTab>;
+        if (authorizedUser === null) {
+            return (
+            <>
+                    <AppBarTab to="/signin" text="Sign in"></AppBarTab>
+                    <AppBarTab to="/signup" text="Sign up"></AppBarTab>
+            </>);
         } else {
             return (
                 <>
@@ -58,25 +64,7 @@ const AppBar = () => {
         </>
     );
 
-
-    //return (
-    //    <>
-    //        <View style={styles.container}>
-    //            <ScrollView horizontal>
-    //                <AppBarTab to="/" text="Repositories"></AppBarTab>
-    //                {username ? (
-    //                    <>
-    //                        <AppBarTab onPress={() => signOut()} text="Sign out"></AppBarTab>
-    //                    </>
-    //                ) : (
-    //                    <AppBarTab to="/signin" text="Sign in"></AppBarTab>
-    //                )}
-    //                {/*{username && <AppBarLink text="Create Review" path="/review" />}*/}
-    //                {/*{!username && <AppBarLink text="Sign Up" path="/signup" />}*/}
-    //            </ScrollView>
-    //        </View>
-    //    </>
-    //);
+     
 };
 
 export default AppBar;
