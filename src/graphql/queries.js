@@ -24,6 +24,14 @@ ${REPOSITORY_INFO}
 ${REVIEW_INFO}
 `;
 
+//repositories(
+//    after: String
+//first: Int
+//orderDirection: OrderDirection
+//orderBy: AllRepositoriesOrderBy
+//searchKeyword: String
+//ownerName: String
+//): RepositoryConnection!
 
 export const GET_REPOSITORIES = gql`
   query {

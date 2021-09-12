@@ -12,8 +12,7 @@ const SignUp = () => {
     const onSubmit = async (values) => {
         const { username, password } = values;
 
-        try {
-            console.log('values ', values);
+        try { 
 
             let { data } = await signUp({ username, password });  
 
