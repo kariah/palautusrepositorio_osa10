@@ -1,7 +1,6 @@
 import React from "react";
 import { FlatList, View, StyleSheet } from "react-native";
-import RepositoryItem from "./RepositoryItem";
-/*import RepositorySort from "./RepositorySort";*/
+import RepositoryItem from "./RepositoryItem"; 
 import RepositoryListHeader from "./RepositoryListHeader ";
 
 const styles = StyleSheet.create({
@@ -20,8 +19,8 @@ export const RepositoryListContainer = ({ repositories, setSorting }) => {
 
     const renderItem = ({ item }) => <RepositoryItem item={item} />;
 
-   /* Jostain syystä header - komponentti menee selaimessaflatlistin päälle enkä löytänyt tähän kunnollista ratkaisua joten päädyin laittamaan näkymän sisään*/
-    /*ListHeaderComponent = {() => <RepositoryListHeader setSorting={setSorting} />}*/
+    /* Jostain syystä listan elementit menivät selaimessa aina menu-elementin päälle enkä löytänyt tähän kunnollista ratkaisua joten päädyin laittamaan oman viewn sisään*/
+    /* en käyttänyt tätä tapaa: ListHeaderComponent = {() => <RepositoryListHeader setSorting={setSorting} />}*/
 
     return (
         <View>
