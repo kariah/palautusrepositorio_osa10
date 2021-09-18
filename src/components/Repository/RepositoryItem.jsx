@@ -14,8 +14,7 @@ const itemStyles = StyleSheet.create({
         paddingTop: 20,
         backgroundColor: "#ecf0f1",
         padding: 20,
-        paddingRight: 100,
-        zIndex: 0, 
+        paddingRight: 100 
     },
     bold: {
         fontWeight: "700",
@@ -25,7 +24,7 @@ const itemStyles = StyleSheet.create({
 const itemHeaderStyles = StyleSheet.create({
     container: {
         flexDirection: "row",
-        flexGrow: 1,
+        flexGrow: 1
     },
     imageContainer: {
         flexGrow: 0,

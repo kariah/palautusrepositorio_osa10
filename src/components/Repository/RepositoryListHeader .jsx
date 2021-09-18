@@ -49,7 +49,8 @@ const RepositoryListHeader = ({
                         justifyContent: 'center',
                         alignItems: "center" 
                     }}>
-                        <Menu
+                        {/*TODO: bugi: Menun valikko jää listan itemin alle*/}
+                        <Menu style={{ zIndex: "100 !important" }}
                             visible={visible}
                             onDismiss={closeMenu}
                             anchor={<Button onPress={openMenu}>Latest repositories</Button>}>
