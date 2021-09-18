@@ -11,7 +11,12 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-export const RepositoryListContainer = ({ repositories, setSorting }) => {
+export const RepositoryListContainer = ({
+    repositories,
+    setSorting,
+    searchQuery,
+    setSearchQuery
+}) => {
 
     const repositoryNodes = repositories
         ? repositories.edges.map((edge) => edge.node)
@@ -24,7 +29,11 @@ export const RepositoryListContainer = ({ repositories, setSorting }) => {
 
     return (
         <View>
-            <RepositoryListHeader setSorting={setSorting} />
+            <RepositoryListHeader
+                setSorting={setSorting}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+            />
             <FlatList
                 data={repositoryNodes}
                 ItemSeparatorComponent={ItemSeparator}

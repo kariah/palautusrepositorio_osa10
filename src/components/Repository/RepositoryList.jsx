@@ -8,9 +8,18 @@ const RepositoryList = () => {
         orderBy: "CREATED_AT",
         OrderDirection: "DESC"
     });
-    const { repositories } = useRepositories(sorting);
-     
-    return <RepositoryListContainer repositories={repositories} setSorting={setSorting} />;
+    const [searchQuery, setSearchQuery] = useState('');
+    const { repositories } = useRepositories(sorting, searchQuery);
+
+
+    console.log('searchquery, haku ', searchQuery)
+
+    return <RepositoryListContainer
+        repositories={repositories}
+        setSorting={setSorting}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+    />;
 };
 
 export default RepositoryList;

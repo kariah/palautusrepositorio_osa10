@@ -1,17 +1,37 @@
 import React from "react";
 import { useState } from 'react';
 import { View } from "react-native";
-import { Button, Menu, Provider, Divider } from "react-native-paper";
+import { Button, Menu, Provider, Divider, Searchbar } from "react-native-paper";
+import { useDebounce } from 'use-debounce';
 
 const RepositoryListHeader = ({
-    setSorting
+    setSorting,
+    searchQuery,
+    setSearchQuery
 }) => {
-      
-    const [visible, setVisible] = useState(false); 
-    const openMenu = () => setVisible(true); 
+
+    const [visible, setVisible] = useState(false);
+    const openMenu = () => setVisible(true);
     const closeMenu = () => setVisible(false);
 
-    return ( 
+    const [searchText, setSearchText] = useState('');
+    searchQuery = useDebounce(searchText, 1000);
+
+    console.log('searchText ', searchText)
+
+   /* console.log('value ', value)*/
+    //setSearchQuery(useDebounce(text, 1000)); 
+
+    const onChangeSearch = query => {
+        console.log('query ', query)
+        setSearchText(query);
+       /* setSearchQuery(query)*/
+    } 
+
+    //const [searchQuery, setSearchQuery] = React.useState(''); 
+    //const onChangeSearch = query => setSearchQuery(query);
+
+    return (
         <View style={{ zIndex: 100 }}>
             <Provider>
                 <View style={{ zIndex: 100 }}
@@ -21,9 +41,16 @@ const RepositoryListHeader = ({
                         flexDirection: 'row',
                         justifyContent: 'center',
                         backgroundColor: '#ebe9e6',
-                        zIndex: 88,
+                        zIndex: 100,
                         textTransform: "none"
                     }}>
+                    <View>
+                        <Searchbar
+                            placeholder="Search"
+                            onChangeText={onChangeSearch}
+                            value={searchText}
+                        />
+                    </View>
                     <Menu
                         visible={visible}
                         onDismiss={closeMenu}
@@ -38,7 +65,7 @@ const RepositoryListHeader = ({
                         />
                         <Menu.Item title="Lowest rated repositories"
                             onPress={() => setSorting({ orderDirection: "RATING_AVERAGE", orderDirection: "ASC" })}
-                        /> 
+                        />
                     </Menu>
                 </View>
             </Provider>
