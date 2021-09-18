@@ -2,17 +2,17 @@ import React from "react";
 import { useState } from 'react';
 import useRepositories from "../../hooks/useRepositories";
 import RepositoryListContainer from "./RepositoryListContainer";
+import { useDebounce } from "use-debounce";
  
 const RepositoryList = () => {
     const [sorting, setSorting] = useState({
         orderBy: "CREATED_AT",
         OrderDirection: "DESC"
     });
-    const [searchQuery, setSearchQuery] = useState('');
-    const { repositories } = useRepositories(sorting, searchQuery);
+    const [searchQuery, setSearchQuery] = useState(''); 
+    const [searchText] = useDebounce(searchQuery, 500);
 
-
-    console.log('searchquery, haku ', searchQuery)
+    const { repositories } = useRepositories(sorting, searchText); 
 
     return <RepositoryListContainer
         repositories={repositories}

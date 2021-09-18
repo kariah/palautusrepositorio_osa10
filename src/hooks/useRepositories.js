@@ -10,7 +10,7 @@ import {
 } from '../graphql/queries';
  
 
-const useRepositories = (sorting) => {
+const useRepositories = (sorting, searchKeyword) => {
     const [repositories, setRepositories] = useState();
     const {
         data,
@@ -20,7 +20,8 @@ const useRepositories = (sorting) => {
         fetchPolicy: 'cache-and-network',
         variables: {
             orderDirection: sorting.orderDirection,
-            orderBy: sorting.orderBy
+            orderBy: sorting.orderBy,
+            searchKeyword: searchKeyword
         }
     });
 
