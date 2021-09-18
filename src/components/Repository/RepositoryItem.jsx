@@ -14,7 +14,8 @@ const itemStyles = StyleSheet.create({
         paddingTop: 20,
         backgroundColor: "#ecf0f1",
         padding: 20,
-        paddingRight: 100
+        paddingRight: 100,
+        zIndex: 0, 
     },
     bold: {
         fontWeight: "700",

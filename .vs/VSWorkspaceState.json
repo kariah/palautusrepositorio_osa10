@@ -3,11 +3,14 @@
     "",
     "\\src",
     "\\src\\components",
+    "\\src\\components\\AppBar",
+    "\\src\\components\\Repository",
+    "\\src\\components\\SignIn",
+    "\\src\\components\\SignUp",
     "\\src\\graphql",
     "\\src\\hooks",
-    "\\src\\__tests__",
-    "\\src\\__tests__\\components"
+    "\\src\\__tests__"
   ],
-  "SelectedNode": "\\src\\components\\Repository.jsx",
+  "SelectedNode": "\\src\\components\\Repository\\RepositoryListContainer.jsx",
   "PreviewInSolutionExplorer": false
 }

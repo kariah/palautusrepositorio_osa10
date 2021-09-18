@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
     container: { 
         flexGrow: 1,
         flexShrink: 1,
-        paddingTop: 10
+        zIndex: 0,
+        /*paddingTop: 10*/
     },
 }); 
 

@@ -25,7 +25,7 @@ ${REVIEW_INFO}
 `;
 
 //repositories(
-//    after: String
+//after: String
 //first: Int
 //orderDirection: OrderDirection
 //orderBy: AllRepositoriesOrderBy
@@ -34,8 +34,9 @@ ${REVIEW_INFO}
 //): RepositoryConnection!
 
 export const GET_REPOSITORIES = gql`
-  query {
-    repositories {
+   query getRepositories($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection) {
+    repositories(orderBy: $orderBy,
+                 orderDirection: $orderDirection) {
         edges {
           node { 
             ...RepositoryInfo

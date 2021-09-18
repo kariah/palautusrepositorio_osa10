@@ -10,14 +10,18 @@ import {
 } from '../graphql/queries';
  
 
-const useRepositories = () => {
+const useRepositories = (sorting) => {
     const [repositories, setRepositories] = useState();
     const {
         data,
         error,
         loading
     } = useQuery(GET_REPOSITORIES, {
-        fetchPolicy: 'cache-and-network', 
+        fetchPolicy: 'cache-and-network',
+        variables: {
+            orderDirection: sorting.orderDirection,
+            orderBy: sorting.orderBy
+        }
     });
 
     // if (loading)
