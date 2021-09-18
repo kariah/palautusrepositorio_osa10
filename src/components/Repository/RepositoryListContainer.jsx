@@ -1,6 +1,6 @@
 import React from "react";
 import { FlatList, View, StyleSheet } from "react-native";
-import RepositoryItem from "./RepositoryItem"; 
+import RepositoryItem from "./RepositoryItem";
 import RepositoryListHeader from "./RepositoryListHeader ";
 
 const styles = StyleSheet.create({
@@ -9,40 +9,47 @@ const styles = StyleSheet.create({
     },
 });
 
-const ItemSeparator = () => <View style={styles.separator} />;
 
-export const RepositoryListContainer = ({
-    repositories,
-    setSorting,
-    searchQuery,
-    setSearchQuery
-}) => {
+//export const RepositoryListContainer = ({
+//    repositories,
+//    setSorting,
+//    searchQuery,
+//    setSearchQuery
+//}) => {
 
-    const repositoryNodes = repositories
-        ? repositories.edges.map((edge) => edge.node)
-        : [];
+export default class RepositoryListContainer extends React.Component {
 
-    const renderItem = ({ item }) => <RepositoryItem item={item} />;
+    renderHeader = () => {
+        // this.props contains the component's props
+        const {
+            repositories,
+            setSorting,
+            searchQuery,
+            setSearchQuery } = this.props;
 
-    /* Jostain syystä listan elementit menivät selaimessa aina menu-elementin päälle enkä löytänyt tähän kunnollista ratkaisua joten päädyin laittamaan oman viewn sisään*/
-    /* en käyttänyt tätä tapaa: ListHeaderComponent = {() => <RepositoryListHeader setSorting={setSorting} />}*/
-
-    return (
-        <View>
+        return (
             <RepositoryListHeader
                 setSorting={setSorting}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
             />
-            <FlatList
-                data={repositoryNodes}
-                ItemSeparatorComponent={ItemSeparator}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-                renderItem={renderItem}
-            />
-        </View>
-    );
-};
+        );
+    }; 
+     
+    renderItem = ({ item }) => <RepositoryItem item={item} />; 
+    itemSeparator = () => <View style={styles.separator} />;
 
-export default RepositoryListContainer;
+    render() {
+        return (
+            <View>
+                <FlatList
+                    data={this.props.repositories}
+                    ItemSeparatorComponent={this.itemSeparator}
+                    renderItem={this.renderItem}
+                    keyExtractor={(item) => item.id} 
+                    ListHeaderComponent={this.renderHeader}
+                />
+            </View>
+        );
+    };
+};

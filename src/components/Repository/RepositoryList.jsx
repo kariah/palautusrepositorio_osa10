@@ -14,8 +14,12 @@ const RepositoryList = () => {
 
     const { repositories } = useRepositories(sorting, searchText); 
 
+    const repositoryNodes = repositories
+        ? repositories.edges.map((edge) => edge.node)
+        : [];
+
     return <RepositoryListContainer
-        repositories={repositories}
+        repositories={repositoryNodes}
         setSorting={setSorting}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
