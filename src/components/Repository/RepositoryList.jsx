@@ -4,15 +4,14 @@ import useRepositories from "../../hooks/useRepositories";
 import RepositoryListContainer from "./RepositoryListContainer";
 import { useDebounce } from "use-debounce";
  
-const RepositoryList = () => {
-    const [sorting, setSorting] = useState({
-        orderBy: "CREATED_AT",
-        OrderDirection: "DESC"
-    });
+const RepositoryList = () => { 
+
+    const [sortOrder, sortSortOrder] = useState('CREATED_AT');
+    const [sortDirection, setSortDirection] = useState('DESC');
     const [searchQuery, setSearchQuery] = useState(''); 
     const [searchText] = useDebounce(searchQuery, 500);
 
-    const { repositories } = useRepositories(sorting, searchText); 
+    const { repositories } = useRepositories(sortOrder, sortDirection, searchText);
 
     const repositoryNodes = repositories
         ? repositories.edges.map((edge) => edge.node)
@@ -20,7 +19,8 @@ const RepositoryList = () => {
 
     return <RepositoryListContainer
         repositories={repositoryNodes}
-        setSorting={setSorting}
+        sortSortOrder={sortSortOrder}
+        setSortDirection={setSortDirection}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
     />;

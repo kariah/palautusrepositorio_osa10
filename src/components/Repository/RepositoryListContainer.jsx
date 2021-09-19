@@ -7,29 +7,22 @@ const styles = StyleSheet.create({
     separator: {
         height: 10,
     },
-});
-
-
-//export const RepositoryListContainer = ({
-//    repositories,
-//    setSorting,
-//    searchQuery,
-//    setSearchQuery
-//}) => {
+}); 
 
 export default class RepositoryListContainer extends React.Component {
 
     renderHeader = () => {
         // this.props contains the component's props
-        const {
-            repositories,
-            setSorting,
+        const { 
+            sortSortOrder,
+            setSortDirection,
             searchQuery,
             setSearchQuery } = this.props;
 
         return (
             <RepositoryListHeader
-                setSorting={setSorting}
+                sortSortOrder={sortSortOrder}
+                setSortDirection={setSortDirection}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
             />
