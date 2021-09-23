@@ -19,16 +19,16 @@ const ItemSeparator = () => <View style={styles.separator} />;
 const RepositoryInfo = ({ repository }) => {
     return (
         <View>
-            <SingleRepositoryContainer repository={repository}></SingleRepositoryContainer> 
+            <SingleRepositoryContainer repository={repository}></SingleRepositoryContainer>
         </View>
     );
 };
- 
+
 
 const SingleRepository = () => {
     let { id } = useParams();
 
-    const { repository, loading } = useRepository(id);
+    const { repository, loading, fetchMore } = useRepository({ first: 2, id: id });
 
     if (loading) {
         return <Text>loading ...</Text>
@@ -36,16 +36,29 @@ const SingleRepository = () => {
 
     const reviews = repository
         ? repository.reviews.edges.map((edge) => edge.node)
-        : []; 
+        : [];
 
+    const onEndReach = () => {
+        //console.log('onEndReach');
+
+        fetchMore();
+    };   
+
+// onEndReached = {({ distanceFromEnd }) => {
+//    console.log('on end reached ', distanceFromEnd);
+//}}
     return (
-        <FlatList
-            data={reviews}
-            ItemSeparatorComponent={ItemSeparator}
-            renderItem={({ item }) => <ReviewItem review={item} />}
-            keyExtractor={({ id }) => id}
-            ListHeaderComponent={() => <RepositoryInfo repository={repository} />}
-        />
+        <View style={{ flex: 1 }}>
+            <FlatList
+                data={reviews}
+                ItemSeparatorComponent={ItemSeparator}
+                renderItem={({ item }) => <ReviewItem review={item} />}
+                keyExtractor={({ id }) => id}
+                ListHeaderComponent={() => <RepositoryInfo repository={repository} />}
+                onEndReached={onEndReach}  
+                onEndReachedThreshold={0.5} 
+            />
+        </View>
     );
 };
 

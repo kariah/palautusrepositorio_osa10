@@ -9,15 +9,16 @@ const styles = StyleSheet.create({
     },
 }); 
 
-export default class RepositoryListContainer extends React.Component {
-
+export default class RepositoryListContainer extends React.Component { 
     renderHeader = () => {
         // this.props contains the component's props
         const { 
             sortSortOrder,
             setSortDirection,
             searchQuery,
-            setSearchQuery } = this.props;
+            setSearchQuery,
+            onEndReach
+        } = this.props;
 
         return (
             <RepositoryListHeader
@@ -32,15 +33,20 @@ export default class RepositoryListContainer extends React.Component {
     renderItem = ({ item }) => <RepositoryItem item={item} />; 
     itemSeparator = () => <View style={styles.separator} />;
 
+
     render() {
+        //console.log('onEndReach ', this.props.onEndReach)
+
         return (
-            <View>
+            <View style={{ flex: 1 }}>
                 <FlatList
                     data={this.props.repositories}
                     ItemSeparatorComponent={this.itemSeparator}
                     renderItem={this.renderItem}
                     keyExtractor={(item) => item.id} 
                     ListHeaderComponent={this.renderHeader}
+                    onEndReached={this.props.onEndReach}
+                    onEndReachedThreshold={0.5}
                 />
             </View>
         );

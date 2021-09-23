@@ -36,14 +36,14 @@ const RepositoryListHeader = ({
             backgroundColor: '#ebe9e6',
             alignItems: "center",
             paddingBottom: 10,
-            marginBottom: 60 
+            marginBottom: 60
         },
     });
 
 
     return (
         <View style={{ zIndex: 99 }}>
-            <View style={itemStyles.searchBarContainer}> 
+            <View style={itemStyles.searchBarContainer}>
                 <Searchbar
                     placeholder="Search"
                     onChangeText={onChangeSearch}
@@ -51,23 +51,22 @@ const RepositoryListHeader = ({
                 />
             </View>
             <Provider>
-                <View style={{ zIndex: 99 }} style={itemStyles.menuContainer}> 
+                <View style={{ zIndex: 99 }} style={itemStyles.menuContainer}>
                     <View>
-                        <Menu 
+                        <Menu
                             visible={visible}
                             onDismiss={closeMenu}
-                            anchor={<Button onPress={openMenu}>Latest repositories</Button>}>
+                            anchor={<Button
+                                onPress={openMenu}>Latest repositories
+                            </Button>}>
                             <Menu.Item title="Select an item ..." />
                             <Divider />
                             <Menu.Item title="Latest repositories"
-                                onPress={() => setSorting("CREATED_AT", "DESC")}
-                            />
+                                onPress={() => setSorting("CREATED_AT", "DESC")} />
                             <Menu.Item title="Highest rated repositories"
-                                onPress={() => setSorting("RATING_AVERAGE", "DESC")}
-                            />
+                                onPress={() => setSorting("RATING_AVERAGE", "DESC")} />
                             <Menu.Item title="Lowest rated repositories"
-                                onPress={() => setSorting("RATING_AVERAGE", "ASC")}
-                            />
+                                onPress={() => setSorting("RATING_AVERAGE", "ASC")} />
                         </Menu>
                     </View>
                 </View>
