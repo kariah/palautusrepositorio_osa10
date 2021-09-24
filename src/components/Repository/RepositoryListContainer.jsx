@@ -34,9 +34,7 @@ export default class RepositoryListContainer extends React.Component {
     itemSeparator = () => <View style={styles.separator} />;
 
 
-    render() {
-        //console.log('onEndReach ', this.props.onEndReach)
-
+    render() {  
         return (
             <View style={{ flex: 1 }}>
                 <FlatList

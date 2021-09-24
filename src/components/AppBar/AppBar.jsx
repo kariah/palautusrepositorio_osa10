@@ -4,7 +4,8 @@ import AppBarTab from "./AppBarTab";
 import theme from "../../theme";
 import { useQuery } from "@apollo/client";
 import { GET_AUTHORIZED_USER } from "../../graphql/queries";
-import AuthStorageContext from  "../../contexts/AuthStorageContext";
+import AuthStorageContext from "../../contexts/AuthStorageContext";
+import { useHistory } from "react-router-native";
 
 const styles = StyleSheet.create({
     container: {
@@ -20,7 +21,8 @@ const styles = StyleSheet.create({
 import { useContext } from "react";
 
 const AppBar = () => {
-    const authStorage = useContext(AuthStorageContext); 
+    let history = useHistory();
+    const authStorage = useContext(AuthStorageContext);
 
     const signOut = async () => {
         await authStorage.removeAccessToken();
@@ -37,17 +39,27 @@ const AppBar = () => {
 
     const authorizedUser = data ? data.authorizedUser : null; 
 
+    const openUserReviews = (id, history) => { 
+        const url = `../reviews/${id}`;
+        console.log('url ', url)
+        history.push(url);
+    };
+
+    //<AppBarTab to="/reviews/:id" text="My Reviews" onPress={() => openUserReviews(authorizedUser.id, history)}></AppBarTab>
+    //<AppBarTab to="`/reviews/${authorizedUser.id}`" text="My Reviews"></AppBarTab>
+
     const UserTabs = () => {
         if (authorizedUser === null) {
             return (
-            <>
+                <>
                     <AppBarTab to="/signin" text="Sign in"></AppBarTab>
                     <AppBarTab to="/signup" text="Sign up"></AppBarTab>
-            </>);
+                </>);
         } else {
             return (
                 <>
                     <AppBarTab to="/review" text="Create a Review"></AppBarTab>
+                    <AppBarTab text="My Reviews" onPress={() => openUserReviews(authorizedUser.id, history)}></AppBarTab>
                     <AppBarTab onPress={() => signOut()} text="Sign out"></AppBarTab>
                 </>);
         }
@@ -64,7 +76,7 @@ const AppBar = () => {
         </>
     );
 
-     
+
 };
 
 export default AppBar;

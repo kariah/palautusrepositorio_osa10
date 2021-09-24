@@ -53,16 +53,14 @@ const useRepositories = (variables) => {
     //}, [data]);
 
     const handleFetchMore = () => {
-        console.log('handleFetchMore')
+        //console.log('handleFetchMore')
 
         const canFetchMore = !loading && data?.repositories.pageInfo.hasNextPage;
  
         if (!canFetchMore) {
-            console.log('!canFetchMore')
+            //console.log('!canFetchMore')
             return;
-        }
-
-        console.log('fetchMore')
+        } 
 
         fetchMore({
             variables: {

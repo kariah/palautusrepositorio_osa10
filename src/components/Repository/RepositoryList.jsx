@@ -18,7 +18,7 @@ const RepositoryList = () => {
         : [];
 
     const onEndReach = () => {
-        console.log('onEndReach');
+        //console.log('onEndReach');
 
         fetchMore();
     };
