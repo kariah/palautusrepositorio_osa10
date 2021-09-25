@@ -15,8 +15,7 @@ const ReviewForm = () => {
             text
         }
             = values;
-
-
+         
         console.log('values ', values);
 
         try { 

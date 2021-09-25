@@ -1,11 +1,11 @@
 import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import AppBarTab from "./AppBarTab";
-import theme from "../../theme";
-import { useQuery } from "@apollo/client";
-import { GET_AUTHORIZED_USER } from "../../graphql/queries";
+import theme from "../../theme"; 
+import { useContext } from 'react';
 import AuthStorageContext from "../../contexts/AuthStorageContext";
 import { useHistory } from "react-router-native";
+import useAuthorizedUser from "../../hooks/useAuthorizedUser";
 
 const styles = StyleSheet.create({
     container: {
@@ -17,21 +17,19 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         flexGrow: 1,
     },
-});
-import { useContext } from "react";
+}); 
 
-const AppBar = () => {
-    let history = useHistory();
+const AppBar = () => { 
+    let reviewHistory = useHistory();
     const authStorage = useContext(AuthStorageContext);
 
     const signOut = async () => {
         await authStorage.removeAccessToken();
         history.go("/signin");
     };
-
-    const { data, error, loading } = useQuery(GET_AUTHORIZED_USER, {
-        fetchPolicy: "cache-and-network",
-    });
+     
+    const { data, loading } = useAuthorizedUser({ includeReviews: false });
+    console.log('data  (useAuthorizedUser) ', data)
 
     if (loading) {
         return <>loading ...</>;
@@ -40,14 +38,10 @@ const AppBar = () => {
     const authorizedUser = data ? data.authorizedUser : null; 
 
     const openUserReviews = (id, history) => { 
-        const url = `../reviews/${id}`;
-        console.log('url ', url)
+        const url = `../reviews/${id}`; 
         history.push(url);
     };
-
-    //<AppBarTab to="/reviews/:id" text="My Reviews" onPress={() => openUserReviews(authorizedUser.id, history)}></AppBarTab>
-    //<AppBarTab to="`/reviews/${authorizedUser.id}`" text="My Reviews"></AppBarTab>
-
+     
     const UserTabs = () => {
         if (authorizedUser === null) {
             return (
@@ -59,7 +53,7 @@ const AppBar = () => {
             return (
                 <>
                     <AppBarTab to="/review" text="Create a Review"></AppBarTab>
-                    <AppBarTab text="My Reviews" onPress={() => openUserReviews(authorizedUser.id, history)}></AppBarTab>
+                    <AppBarTab text="My Reviews" onPress={() => openUserReviews(authorizedUser.id, reviewHistory)}></AppBarTab>
                     <AppBarTab onPress={() => signOut()} text="Sign out"></AppBarTab>
                 </>);
         }

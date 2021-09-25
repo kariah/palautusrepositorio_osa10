@@ -1,24 +1,8 @@
-import {
-    useState,
-    useEffect
-} from 'react';
-import {
-    useQuery
-} from '@apollo/client';
-import {
-    GET_REPOSITORIES
-} from '../graphql/queries';
+import { useQuery } from "@apollo/client";
+import { GET_REPOSITORIES} from '../graphql/queries';
 
 
-const useRepositories = (variables) => {
-
-    //console.log('variables ', variables);
-    //console.log('sortOrder ', variables.sortOrder);
-    //console.log('sortDirection ', variables.sortDirection);
-    //console.log('searchKeyword ', variables.searchKeyword); 
-
-    /* const [repositories, setRepositories] = useState();*/
-
+const useRepositories = (variables) => { 
     const {
         data,
         //error,
@@ -33,24 +17,7 @@ const useRepositories = (variables) => {
             orderDirection: variables.sortDirection,
             searchKeyword: variables.searchKeyword
         }
-    }); 
-
-    // if (loading)
-    // {
-    //     console.log('loading ...')
-    // }
-
-    //const fetchRepositories = async () => {
-    //    if (data) {
-    //        setRepositories(data.repositories);
-    //    }
-    //};
-
-    //useEffect(() => {
-    //    if (data) {
-    //        fetchRepositories();
-    //    }
-    //}, [data]);
+    });  
 
     const handleFetchMore = () => {
         //console.log('handleFetchMore')

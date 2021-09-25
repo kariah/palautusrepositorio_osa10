@@ -11,12 +11,12 @@ const RepositoryList = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchText] = useDebounce(searchQuery, 500);
 
-    const { repositories, fetchMore } = useRepositories({ first: 2, sortOrder, sortDirection, searchText });
+    const { repositories, fetchMore } = useRepositories({ first: 3, sortOrder, sortDirection, searchText });
 
     const repositoryNodes = repositories
         ? repositories.edges.map((edge) => edge.node)
         : [];
-
+     
     const onEndReach = () => {
         //console.log('onEndReach');
 

@@ -4,6 +4,7 @@ import { CREATE_REVIEW } from "../graphql/mutations";
 const useReview = () => { 
     const [mutate, result] = useMutation(CREATE_REVIEW);  
 
+    console.log('repositoryName')
     const createReview = async ({
         repositoryName,
         ownerName,
@@ -19,10 +20,12 @@ const useReview = () => {
                     text 
                 }
             },
-        }); 
+        });
+
+        console.log('data (createReview) ', data);
 
         return { data };
-    };
+    };  
 
     return [createReview, result];
 };

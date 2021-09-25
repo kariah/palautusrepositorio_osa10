@@ -67,17 +67,40 @@ export const GET_REPOSITORIES = gql`
             endCursor
             startCursor
             hasNextPage
-          }
+        }
       }
   }
 ${REPOSITORY_INFO}
 `;
 
+//export const GET_AUTHORIZED_USER = gql`
+//  query { 
+//      authorizedUser {
+//        id
+//        username
+//      }
+//    } 
+//`;
+
 export const GET_AUTHORIZED_USER = gql`
-  query { 
-      authorizedUser {
-        id
-        username
+  query getAuthorizedUser($includeReviews: Boolean = false) {
+    authorizedUser {
+      id
+      username
+      reviews @include(if: $includeReviews) {
+        edges {
+          node {
+             ...ReviewInfo
+          }
+          cursor
+        }
+        pageInfo {
+          endCursor
+          startCursor
+          hasNextPage
+        }
       }
-    } 
+    }
+  }
+${REVIEW_INFO}
 `;
