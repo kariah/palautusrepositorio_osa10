@@ -14,10 +14,11 @@ const ReviewList = () => {
 
     const authorizedUser = data ? data.authorizedUser : null;
 
-    console.log('parameter id', id);
-    console.log('authorizedUser', authorizedUser);
+    const reviewNodes = data
+        ? data.authorizedUser.reviews.edges.map((edge) => edge.node)
+        : []; 
 
-    return <ReviewListContainer />
+    return <ReviewListContainer reviews={reviewNodes} />
     
 };
 

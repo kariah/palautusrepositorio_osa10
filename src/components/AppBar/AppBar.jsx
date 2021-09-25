@@ -29,8 +29,7 @@ const AppBar = () => {
     };
      
     const { data, loading } = useAuthorizedUser({ includeReviews: false });
-    console.log('data  (useAuthorizedUser) ', data)
-
+   
     if (loading) {
         return <>loading ...</>;
     }

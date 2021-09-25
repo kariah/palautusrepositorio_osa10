@@ -16,7 +16,7 @@ const ReviewForm = () => {
         }
             = values;
          
-        console.log('values ', values);
+        console.log('repositoryName ', repositoryName);
 
         try { 
             const { data } = await createReview({

@@ -17,7 +17,24 @@ export const CREATE_REVIEW = gql`
     }
   }
 ${REVIEW_INFO}
-`; 
+`;
+
+//export const CREATE_REVIEW = gql`
+// mutation  {
+//    createReview(
+//      review: {
+//        repositoryName: "formik"
+//        ownerName: "jaredpalmer"
+//        rating: 20
+//        text: "ok"
+//      }
+//    )
+//    {
+//       ...ReviewInfo
+//    }
+//  }
+//${REVIEW_INFO}
+//`;
 
 export const CREATE_USER = gql`
   mutation createUser($user: CreateUserInput) {
