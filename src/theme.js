@@ -70,6 +70,13 @@ const theme = {
       borderRadius: 5,
       paddingVertical: 5,
       paddingHorizontal: 5
+      },
+    appButtonContainerRed: {
+        elevation: 8,
+        backgroundColor: '#FF0000',
+        borderRadius: 5,
+        paddingVertical: 5,
+        paddingHorizontal: 5
     },
     appButtonText: {
       fontSize: 14,

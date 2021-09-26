@@ -59,14 +59,14 @@ const AppBar = () => {
     };
 
     return (
-        <>
+        <View>
             <View style={styles.container}>
                 <ScrollView horizontal>
                     <AppBarTab to="/" text="Repositories"></AppBarTab>
                     <UserTabs></UserTabs>
                 </ScrollView>
             </View>
-        </>
+        </View>
     );
 
 

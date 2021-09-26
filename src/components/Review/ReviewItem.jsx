@@ -1,12 +1,13 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import { format, parseISO } from 'date-fns'   
+import { Text, View, StyleSheet, Pressable, Alert } from "react-native";
+import { format, parseISO } from 'date-fns'
+import theme from "../../theme";
 
 const itemStyles = StyleSheet.create({
     container: {
         flex: 1,
         display: "flex",
-        justifyContent: "center", 
+        justifyContent: "center",
         paddingTop: 20,
         padding: 20,
         paddingRight: 100
@@ -18,7 +19,7 @@ const itemStyles = StyleSheet.create({
 
 const reviewItemStyles = StyleSheet.create({
     container: {
-        flexDirection: "row", 
+        flexDirection: "row",
     },
     ratingValueContainer: {
         flexGrow: 0,
@@ -43,18 +44,73 @@ const reviewItemStyles = StyleSheet.create({
     },
 });
 
-const buttonStyles = StyleSheet.create({ 
+const buttonStyles = StyleSheet.create({
     container: {
-        flexDirection: "row",
-        flexGrow: 0,
+        flexDirection: "row", 
         paddingTop: 20,
         paddingBottom: 20,
+        flex: 1, 
+        justifyContent: "center",
+        alignItems: "center",
     },
-    info: {
-    },
+    button: { 
+        flexGrow: 1, 
+        paddingRight: 10
+    }, 
 });
 
 const ReviewItem = (item) => {
+    //const deleteReview = () =>
+    //    Alert.alert(
+    //        "Delete review",
+    //        "Are you sure you want to delete this review",
+    //        [
+    //            {
+    //                text: "Cancel",
+    //                onPress: () =>
+    //                    console.log("Cancel Pressed"),
+    //                style: "cancel"
+    //            },
+    //            {
+    //                text: "Delete",
+    //                onPress: () => console.log("OK Pressed")
+    //            }
+    //        ]
+    //    );
+
+    const deleteReview = async () => {
+        console.log('deleteReview')
+    };
+
+
+    const onPress = async () => {
+        console.log('onPress')
+        //const {
+        //        repositoryName,
+        //        ownerName,
+        //        rating,
+        //        text
+        //    }
+        //    = values;
+
+        //console.log('repositoryName ', repositoryName);
+
+        //try {
+        //    const { data } = await createReview({
+        //        repositoryName,
+        //        ownerName,
+        //        rating,
+        //        text
+        //    });
+
+        //    if (data !== null) {
+        //        history.push(`/repository/${values.ownerName}.${values.repositoryName}`);
+        //    }
+        //} catch (e) {
+        //    console.log(e);
+        //}
+    };
+
     return (
         <View style={itemStyles.container}>
             <View style={reviewItemStyles.container}>
@@ -69,20 +125,29 @@ const ReviewItem = (item) => {
                     <Text style={reviewItemStyles.reviewText} testID="text">{item.review.text}</Text>
                 </View>
             </View>
-            <View>
-                <Text>TODO: Toimintopainikkeet</Text>
-            </View>
-        </View>
+            <View style={buttonStyles.container}>
+                <View style={buttonStyles.button}>
+                    <Pressable
+                        onPress={onPress}
+                        style={theme.appButton.appButtonContainer} 
+                    >
+                        <Text style={theme.appButton.appButtonText}>View repository</Text>
+                    </Pressable>
+                </View>
+                <View style={buttonStyles.button}>
+                    <Pressable  
+                        onPress={deleteReview}
+                        style={theme.appButton.appButtonContainerRed}
+                    >
+                        <Text style={theme.appButton.appButtonText}>Delete review</Text>
+                    </Pressable>
+                </View>
+            </View >
+        </View >
     );
 };
 
 
-//<View style={buttonStyles.container}>
-//    <AppButton
-//        title={item.item.language}
-//        onPress={() => console.log("Button pressed")}
-//        testID="language"
-//    />
-//</View>
+
 
 export default ReviewItem;

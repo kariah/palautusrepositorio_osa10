@@ -66,21 +66,21 @@ const RepositoryItem = (item) => {
     let history = useHistory();
 
     return (
-        <>
+        <View>
             <View style={itemStyles.container}>
                 <Pressable onPress={() => openRepository(item.item.id, history)} >
                     <RepositoryItemHeader item={item}></RepositoryItemHeader>
                     <RepositoryItemFooter item={item}></RepositoryItemFooter>
                 </Pressable>
             </View>
-        </>
+        </View>
     );
 };
 
 const RepositoryItemHeader = (props) => {
     const item = props.item;
     return (
-        <>
+        <View>
             <View style={itemHeaderStyles.container}>
                 <View style={itemHeaderStyles.imageContainer}>
                     <RepositoryItemImage
@@ -101,7 +101,7 @@ const RepositoryItemHeader = (props) => {
                     </View>
                 </View>
             </View>
-        </>
+        </View>
     );
 };
  
@@ -110,7 +110,7 @@ const RepositoryItemFooter = (props) => {
     const item = props.item;
 
     return (
-        <>
+        <View>
             <View style={itemFooterStyles.container}>
                 <FooterTotal
                     total={item.item.stargazersCount}
@@ -125,7 +125,7 @@ const RepositoryItemFooter = (props) => {
                     testID="ratingAverage"
                 ></FooterTotal>
             </View>
-        </>
+        </View>
     );
 };
 
@@ -151,7 +151,7 @@ const FooterTotal = (props) => {
     let amountToShow = nFormatter(total);
 
     return (
-        <>
+        <View>
             <View style={itemFooterStyles.total}>
                 <View>
                     <Text style={itemStyles.bold} testID={testID}>{amountToShow}</Text>
@@ -160,7 +160,7 @@ const FooterTotal = (props) => {
                     <Text>{text}</Text>
                 </View>
             </View>
-        </>
+        </View>
     );
 };
 

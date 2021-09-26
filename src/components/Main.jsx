@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 
 const Main = () => { 
     return (
-        <>
+        <View>
             <AppBar></AppBar>
             <Switch> 
                 <Route path="/signin">
@@ -51,7 +51,7 @@ const Main = () => {
                 </Route>
                 <Redirect to="/" />
             </Switch>
-        </>
+        </View>
     );
 };
 
