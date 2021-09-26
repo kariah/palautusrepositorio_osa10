@@ -43,6 +43,16 @@ const reviewItemStyles = StyleSheet.create({
     },
 });
 
+const buttonStyles = StyleSheet.create({ 
+    container: {
+        flexDirection: "row",
+        flexGrow: 0,
+        paddingTop: 20,
+        paddingBottom: 20,
+    },
+    info: {
+    },
+});
 
 const ReviewItem = (item) => {
     return (
@@ -59,8 +69,20 @@ const ReviewItem = (item) => {
                     <Text style={reviewItemStyles.reviewText} testID="text">{item.review.text}</Text>
                 </View>
             </View>
+            <View>
+                <Text>TODO: Toimintopainikkeet</Text>
+            </View>
         </View>
     );
 };
+
+
+//<View style={buttonStyles.container}>
+//    <AppButton
+//        title={item.item.language}
+//        onPress={() => console.log("Button pressed")}
+//        testID="language"
+//    />
+//</View>
 
 export default ReviewItem;

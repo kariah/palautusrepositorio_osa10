@@ -1,15 +1,13 @@
 import React from "react"; 
-import ReviewListContainer from "./ReviewListContainer";
-import { useParams } from "react-router";  
+import ReviewListContainer from "./ReviewListContainer"; 
+import { View, Text } from "react-native";
 import useAuthorizedUser from "../../hooks/useAuthorizedUser";
 
-const ReviewList = () => { 
-    let { id } = useParams();
-     
+const ReviewList = () => {   
     const { data, loading } = useAuthorizedUser({ includeReviews: true });
 
     if (loading) {
-        return <>loading ...</>;
+        return <View><Text>loading ...</Text></View>;
     }
 
     const authorizedUser = data ? data.authorizedUser : null;
