@@ -2,6 +2,8 @@ import React from "react";
 import { Text, View, StyleSheet, Pressable, Alert } from "react-native";
 import { format, parseISO } from 'date-fns'
 import theme from "../../theme";
+import { useHistory } from "react-router-native";
+import useDeleteReview from "../../hooks/useDeleteReview";
 
 const itemStyles = StyleSheet.create({
     container: {
@@ -58,8 +60,15 @@ const buttonStyles = StyleSheet.create({
         paddingRight: 10
     }, 
 });
+ 
 
-const ReviewItem = (item) => {
+
+const ReviewItem = (item) => {  
+    const history = useHistory();
+    const [deleteReview] = useDeleteReview();
+
+   /* console.log('item.review.id ', item.review.id);*/
+
     //const deleteReview = () =>
     //    Alert.alert(
     //        "Delete review",
@@ -78,37 +87,40 @@ const ReviewItem = (item) => {
     //        ]
     //    );
 
-    const deleteReview = async () => {
-        console.log('deleteReview')
+    const deleteReviewPress = async (id) => {
+        //TODO poisto
+        console.log('deleteReview ', id)
     };
 
+    //const onSubmit = async (values) => {
+    //    const {
+    //            repositoryName,
+    //            ownerName,
+    //            rating,
+    //            text
+    //        }
+    //        = values;
 
-    const onPress = async () => {
-        console.log('onPress')
-        //const {
-        //        repositoryName,
-        //        ownerName,
-        //        rating,
-        //        text
-        //    }
-        //    = values;
+    //    console.log('repositoryName ', repositoryName);
 
-        //console.log('repositoryName ', repositoryName);
+    //    try {
+    //        const { data } = await createReview({
+    //            repositoryName,
+    //            ownerName,
+    //            rating,
+    //            text
+    //        });
 
-        //try {
-        //    const { data } = await createReview({
-        //        repositoryName,
-        //        ownerName,
-        //        rating,
-        //        text
-        //    });
+    //        if (data !== null) {
+    //            history.push(`/repository/${values.ownerName}.${values.repositoryName}`);
+    //        }
+    //    } catch (e) {
+    //        console.log(e);
+    //    }
+    //}; 
 
-        //    if (data !== null) {
-        //        history.push(`/repository/${values.ownerName}.${values.repositoryName}`);
-        //    }
-        //} catch (e) {
-        //    console.log(e);
-        //}
+    const viewRepository = async () => { 
+        history.push(`/repository/${item.review.repositoryId}`) 
     };
 
     return (
@@ -128,7 +140,7 @@ const ReviewItem = (item) => {
             <View style={buttonStyles.container}>
                 <View style={buttonStyles.button}>
                     <Pressable
-                        onPress={onPress}
+                        onPress={viewRepository}
                         style={theme.appButton.appButtonContainer} 
                     >
                         <Text style={theme.appButton.appButtonText}>View repository</Text>
@@ -136,7 +148,7 @@ const ReviewItem = (item) => {
                 </View>
                 <View style={buttonStyles.button}>
                     <Pressable  
-                        onPress={deleteReview}
+                        onPress={() => deleteReviewPress(`${item.review.id}`)}
                         style={theme.appButton.appButtonContainerRed}
                     >
                         <Text style={theme.appButton.appButtonText}>Delete review</Text>

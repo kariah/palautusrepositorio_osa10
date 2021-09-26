@@ -43,10 +43,7 @@ const SingleRepository = () => {
 
         fetchMore();
     };   
-
-// onEndReached = {({ distanceFromEnd }) => {
-//    console.log('on end reached ', distanceFromEnd);
-//}}
+     
     return (
         <View style={{ flex: 1 }}>
             <FlatList

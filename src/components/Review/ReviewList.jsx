@@ -8,9 +8,7 @@ const ReviewList = () => {
 
     if (loading) {
         return <View><Text>loading ...</Text></View>;
-    }
-
-    const authorizedUser = data ? data.authorizedUser : null;
+    } 
 
     const reviewNodes = data
         ? data.authorizedUser.reviews.edges.map((edge) => edge.node)
