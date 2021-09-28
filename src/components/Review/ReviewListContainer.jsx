@@ -11,13 +11,13 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const ReviewListContainer = ({ reviews }) => {  
+const ReviewListContainer = ({ reviews, userId }) => {  
     return ( 
         <View style={{ flex: 1 }}>
             <FlatList
                 data={reviews}
                 ItemSeparatorComponent={ItemSeparator}
-                renderItem={({ item }) => <ReviewItem review={item} />}
+                renderItem={({ item }) => <ReviewItem review={item} userId={userId} />}
                 keyExtractor={({ id }) => id}  
             />
         </View>

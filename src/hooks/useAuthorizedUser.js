@@ -1,6 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { GET_AUTHORIZED_USER } from "../graphql/queries";
-import { useState, useEffect} from 'react';
+import { GET_AUTHORIZED_USER } from "../graphql/queries"; 
 
 const useAuthorizedUser = (variables) => { 
     //let fetchPolicy = 'cache-and-network';

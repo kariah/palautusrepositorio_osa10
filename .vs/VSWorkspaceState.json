@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\AppBar",
-    "\\src\\components\\Repository",
-    "\\src\\components\\SignIn",
+    "\\src\\components\\Common",
+    "\\src\\components\\Review",
+    "\\src\\components\\SignUp",
     "\\src\\graphql",
     "\\src\\hooks",
     "\\src\\utils",
     "\\src\\__tests__"
   ],
-  "SelectedNode": "\\src\\components\\Review\\ReviewItem.jsx",
+  "SelectedNode": "\\src\\components\\Review\\ReviewList.jsx",
   "PreviewInSolutionExplorer": false
 }

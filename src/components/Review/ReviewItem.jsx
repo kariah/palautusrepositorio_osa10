@@ -48,79 +48,57 @@ const reviewItemStyles = StyleSheet.create({
 
 const buttonStyles = StyleSheet.create({
     container: {
-        flexDirection: "row", 
+        flexDirection: "row",
         paddingTop: 20,
         paddingBottom: 20,
-        flex: 1, 
+        flex: 1,
         justifyContent: "center",
         alignItems: "center",
     },
-    button: { 
-        flexGrow: 1, 
+    button: {
+        flexGrow: 1,
         paddingRight: 10
-    }, 
+    },
 });
- 
 
 
-const ReviewItem = (item) => {  
+const ReviewItem = (props) => {
+    const review = props.review;
+    const userId = props.userId
     const history = useHistory();
     const [deleteReview] = useDeleteReview();
 
-   /* console.log('item.review.id ', item.review.id);*/
+    const deleteReviewPress = (id, userId) =>
+        Alert.alert(
+            "Delete review",
+            "Are you sure you want to delete this review?",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+                { text: "OK", onPress: () => doDeleteReview(id, userId) }
+            ]
+        );
 
-    //const deleteReview = () =>
-    //    Alert.alert(
-    //        "Delete review",
-    //        "Are you sure you want to delete this review",
-    //        [
-    //            {
-    //                text: "Cancel",
-    //                onPress: () =>
-    //                    console.log("Cancel Pressed"),
-    //                style: "cancel"
-    //            },
-    //            {
-    //                text: "Delete",
-    //                onPress: () => console.log("OK Pressed")
-    //            }
-    //        ]
-    //    );
 
-    const deleteReviewPress = async (id) => {
-        //TODO poisto
-        console.log('deleteReview ', id)
+     const doDeleteReview = async (id, userId) => { 
+        try {
+            let { data } = await deleteReview({ id });
+
+            if (data.deleteReview === true) { 
+                const url = `../reviews/${userId}`;
+                history.push(url);
+            }
+        } catch (e) {
+            console.log(e);
+        }
     };
 
-    //const onSubmit = async (values) => {
-    //    const {
-    //            repositoryName,
-    //            ownerName,
-    //            rating,
-    //            text
-    //        }
-    //        = values;
 
-    //    console.log('repositoryName ', repositoryName);
-
-    //    try {
-    //        const { data } = await createReview({
-    //            repositoryName,
-    //            ownerName,
-    //            rating,
-    //            text
-    //        });
-
-    //        if (data !== null) {
-    //            history.push(`/repository/${values.ownerName}.${values.repositoryName}`);
-    //        }
-    //    } catch (e) {
-    //        console.log(e);
-    //    }
-    //}; 
-
-    const viewRepository = async () => { 
-        history.push(`/repository/${item.review.repositoryId}`) 
+    const viewRepository = async () => {
+        history.push(`/repository/${review.repositoryId}`)
     };
 
     return (
@@ -128,27 +106,27 @@ const ReviewItem = (item) => {
             <View style={reviewItemStyles.container}>
                 <View style={reviewItemStyles.ratingValueContainer}>
                     <View style={reviewItemStyles.ratingValueTextView}>
-                        <Text style={reviewItemStyles.ratingValueText}>{item.review.rating}</Text>
+                        <Text style={reviewItemStyles.ratingValueText}>{review.rating}</Text>
                     </View>
                 </View>
                 <View >
-                    <Text style={itemStyles.bold} testID="username">{item.review.user.username}</Text>
-                    <Text style={reviewItemStyles.reviewText} testID="createdAt">{format(parseISO(item.review.createdAt), 'dd.MM.yyyy')}</Text>
-                    <Text style={reviewItemStyles.reviewText} testID="text">{item.review.text}</Text>
+                    <Text style={itemStyles.bold} testID="username">{review.user.username}</Text>
+                    <Text style={reviewItemStyles.reviewText} testID="createdAt">{format(parseISO(review.createdAt), 'dd.MM.yyyy')}</Text>
+                    <Text style={reviewItemStyles.reviewText} testID="text">{review.text}</Text>
                 </View>
             </View>
             <View style={buttonStyles.container}>
                 <View style={buttonStyles.button}>
                     <Pressable
                         onPress={viewRepository}
-                        style={theme.appButton.appButtonContainer} 
+                        style={theme.appButton.appButtonContainer}
                     >
                         <Text style={theme.appButton.appButtonText}>View repository</Text>
                     </Pressable>
                 </View>
                 <View style={buttonStyles.button}>
-                    <Pressable  
-                        onPress={() => deleteReviewPress(`${item.review.id}`)}
+                    <Pressable
+                        onPress={() => deleteReviewPress(`${review.id}`, `${userId}`)}
                         style={theme.appButton.appButtonContainerRed}
                     >
                         <Text style={theme.appButton.appButtonText}>Delete review</Text>
@@ -158,8 +136,5 @@ const ReviewItem = (item) => {
         </View >
     );
 };
-
-
-
 
 export default ReviewItem;

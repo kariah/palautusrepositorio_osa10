@@ -12,9 +12,11 @@ const ReviewList = () => {
 
     const reviewNodes = data
         ? data.authorizedUser.reviews.edges.map((edge) => edge.node)
-        : []; 
+        : [];
 
-    return <ReviewListContainer reviews={reviewNodes} />
+    console.log('reviewNodes.length ', reviewNodes.length);
+
+    return <ReviewListContainer reviews={reviewNodes} userId={data.authorizedUser.id}/>
     
 };
 
